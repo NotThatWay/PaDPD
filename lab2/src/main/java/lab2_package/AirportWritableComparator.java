@@ -5,7 +5,7 @@ import org.apache.hadoop.io.WritableComparator;
 
 public class AirportWritableComparator extends WritableComparator {
     public AirportWritableComparator() {
-        super()
+        super(PassageWritableComparable.class, true)
     }
 
     public int compare(WritableComparable a, WritableComparable b) {
