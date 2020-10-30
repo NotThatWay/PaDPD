@@ -16,7 +16,7 @@ public class PassageMapper extends Mapper<LongWritable, Text, PassageWritableCom
         String line = value.toString();
         String[] words = line.split(COMMA);
         if (key.get() != 0) {
-            context.write(new PassageWritableComparable(Integer.parseInt(words[18]), 0));
+            context.write(new PassageWritableComparable(Integer.parseInt(words[ARR_DELAY_NEW_NUMBER]), 1), new Text(words[DEST_AIPORT_ID_NUMBER]));
         }
     }
 }
