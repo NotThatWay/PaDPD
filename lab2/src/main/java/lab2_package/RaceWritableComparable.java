@@ -9,12 +9,13 @@ public class RaceWritableComparable implements WritableComparable {
     private int airportCode;
     private int flag;
 
-    public RaceWritableComparable() {
-        
+    public RaceWritableComparable(int airportCode, int flag) {
+        this.airportCode = airportCode;
+        this.flag = flag;
     }
 
     public int compareTo(RaceWritableComparable o) {
-
+        
     }
 
     public int write(DataOutput out) {
