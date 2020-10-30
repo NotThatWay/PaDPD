@@ -14,5 +14,8 @@ public class AirportMapper extends Mapper<LongWritable, Text, RaceWritableCompar
             IOException, InterruptedException {
         String line = value.toString();
         String[] words = line.replaceFirst(COMMA, VERTICAL_SLASH).split(VERTICAL_SLASH);
+        if (key.get() != 0) {
+            context.write(RaceWritableComparable());
+        }
     }
 }
