@@ -1,4 +1,4 @@
 package lab2_package;
 
-public class AirportMapper {
+public class AirportMapper extends Mapper{
 }
