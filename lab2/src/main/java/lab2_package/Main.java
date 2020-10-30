@@ -18,7 +18,7 @@ public class Main {
         job.setJobName("Race timeout analyzing");
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
-        job.setMapperClass(WordMapper.class);
+        job.setMapperClass(AirportMapper.class);
         job.setReducerClass(WordReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
