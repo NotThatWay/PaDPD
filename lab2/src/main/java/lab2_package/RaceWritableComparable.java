@@ -47,7 +47,8 @@ public class RaceWritableComparable implements WritableComparable {
     }
 
     public void readFields(DataInput in) {
-        airportCode = in.Int
+        airportCode = in.readInt();
+        flag = in.readInt();
     }
 
     public int hashCode() {
