@@ -7,5 +7,7 @@ public class RaceWritableComparable implements WritableComparable {
 
     }
 
-    public int write()
+    public int write(DataOutput out) {
+        
+    }
 }
