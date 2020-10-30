@@ -9,13 +9,13 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("Usage: Main <input path> <output path>");
+        if (args.length != 3) {
+            System.err.println("Usage: Main <passage path> <aiports> <output path>");
             System.exit(-1);
         }
         Job job = Job.getInstance();
         job.setJarByClass(Main.class);
-        job.setJobName("Race timeout analyzing");
+        job.setJobName("Passages timeout analyzing");
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         job.setMapperClass(AirportMapper.class);

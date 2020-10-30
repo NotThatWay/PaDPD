@@ -5,11 +5,11 @@ import org.apache.hadoop.io.WritableComparable;
 import java.io.DataInput;
 import java.io.DataOutput;
 
-public class RaceWritableComparable implements WritableComparable {
+public class PassageWritableComparable implements WritableComparable {
     private int airportCode;
     private int flag;
 
-    public RaceWritableComparable(int airportCode, int flag) {
+    public PassageWritableComparable(int airportCode, int flag) {
         this.airportCode = airportCode;
         this.flag = flag;
     }
@@ -22,7 +22,7 @@ public class RaceWritableComparable implements WritableComparable {
         return this.flag;
     }
 
-    public int compareTo(RaceWritableComparable o) {
+    public int compareTo(PassageWritableComparable o) {
         if (this.getCode() > o.getCode()) {
             return 1;
         }

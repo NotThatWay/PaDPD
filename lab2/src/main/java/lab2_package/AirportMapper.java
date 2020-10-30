@@ -6,7 +6,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class AirportMapper extends Mapper<LongWritable, Text, RaceWritableComparable, Text>  {
+public class AirportMapper extends Mapper<LongWritable, Text, PassageWritableComparable, Text>  {
     private static final String COMMA = ",";
     private static final String VERTICAL_SLASH = "|";
 
@@ -15,7 +15,7 @@ public class AirportMapper extends Mapper<LongWritable, Text, RaceWritableCompar
         String line = value.toString();
         String[] words = line.replaceFirst(COMMA, VERTICAL_SLASH).split(VERTICAL_SLASH);
         if (key.get() != 0) {
-            context.write(new RaceWritableComparable(Integer.parseInt(words[0]), 0), new Text(words[1]));
+            context.write(new PassageWritableComparable(Integer.parseInt(words[0]), 0), new Text(words[1]));
         }
     }
 }
