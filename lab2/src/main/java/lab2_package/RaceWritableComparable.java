@@ -30,12 +30,20 @@ public class RaceWritableComparable implements WritableComparable {
             return -1;
         }
         else {
-            
+            if (this.getFlag() < o.getFlag()) {
+                return -1;
+            }
+            else if (this.getFlag() > o.getFlag()) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
         }
     }
 
     public int write(DataOutput out) {
-
+        
     }
 
     public void readFields(DataInput dataInput) {
