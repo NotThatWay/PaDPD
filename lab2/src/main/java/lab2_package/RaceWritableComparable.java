@@ -6,6 +6,11 @@ import java.io.DataInput;
 import java.io.DataOutput;
 
 public class RaceWritableComparable implements WritableComparable {
+
+    public RaceWritableComparable() {
+
+    }
+
     public int compareTo(RaceWritableComparable o) {
 
     }
