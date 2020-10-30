@@ -43,11 +43,11 @@ public class RaceWritableComparable implements WritableComparable {
     }
 
     public int write(DataOutput out) {
-        
+
     }
 
-    public void readFields(DataInput dataInput) {
-
+    public void readFields(DataInput in) {
+        
     }
 
     public int hashCode() {
