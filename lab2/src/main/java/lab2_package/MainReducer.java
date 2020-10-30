@@ -11,12 +11,21 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
             IOException, InterruptedException {
         Iterator<Text> iter = values.iterator();
         Text airportName = new Text(iter.next());
-        float minDelay = 0;
-        float maxDelay = Float.MAX_VALUE;
+        float maxDelay = 0;
+        float minDelay = Float.MAX_VALUE;
+        float sum = 0;
+        int number = 0;
         while (iter.hasNext()) {
             float currDelay = Float.parseFloat(iter.next().toString());
-            if (iter.next)
+            if (currDelay > maxDelay) {
+                maxDelay = currDelay;
+            }
+            if (currDelay < minDelay) {
+                minDelay = currDelay;
+            }
+            sum += currDelay;
+            number++;
         }
-
+        float avgDelay = 
     }
 }
