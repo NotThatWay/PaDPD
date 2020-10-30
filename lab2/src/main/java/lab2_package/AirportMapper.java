@@ -9,6 +9,7 @@ import java.io.IOException;
 public class AirportMapper extends Mapper<LongWritable, Text, RaceWritableComparable, Text>  {
     public void map(LongWritable key, Text value, Context context) throws
             IOException, InterruptedException {
-        
+        String line = value.toString();
+        String[] words =
     }
 }
