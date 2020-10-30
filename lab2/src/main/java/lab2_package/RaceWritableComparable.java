@@ -14,8 +14,10 @@ public class RaceWritableComparable implements WritableComparable {
         this.flag = flag;
     }
 
+    public int getCode()
+
     public int compareTo(RaceWritableComparable o) {
-        if 
+        if (this.)
     }
 
     public int write(DataOutput out) {
