@@ -5,6 +5,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -17,7 +18,7 @@ public class Main {
         Job job = Job.getInstance();
         job.setJarByClass(Main.class);
         job.setJobName("Passages timeout analyzing");
-        FileInputFormat.addInputPath(job, new Path(args[1]), TextInputFormat.class, AirportMapper.class);
+        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, AirportMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         job.setMapperClass(AirportMapper.class);
         job.setReducerClass(WordReducer.class);
