@@ -11,6 +11,8 @@ public class AirportWritableComparator extends WritableComparator {
     public int compare(WritableComparable a, WritableComparable b) {
         PassageWritableComparable first = (PassageWritableComparable) a ;
         PassageWritableComparable second = (PassageWritableComparable) b ;
-        
+        if (first > second) {
+            
+        }
     }
 }
