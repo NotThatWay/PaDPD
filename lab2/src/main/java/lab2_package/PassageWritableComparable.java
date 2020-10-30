@@ -4,6 +4,7 @@ import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
+import java.io.IOException;
 
 public class PassageWritableComparable implements WritableComparable {
     private int airportCode;
@@ -42,12 +43,12 @@ public class PassageWritableComparable implements WritableComparable {
         }
     }
 
-    public int write(DataOutput out) {
+    public void write(DataOutput out) throws IOException {
         out.writeInt(airportCode);
         out.writeInt(flag);
     }
 
-    public void readFields(DataInput in) {
+    public void readFields(DataInput in) throws IOException {
         airportCode = in.readInt();
         flag = in.readInt();
     }
