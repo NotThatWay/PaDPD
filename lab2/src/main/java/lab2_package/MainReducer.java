@@ -1,2 +1,4 @@
-package lab2_package;public class MainReducer {
+package lab2_package;
+
+public class MainReducer {
 }
