@@ -16,7 +16,7 @@ public class PassageMapper extends Mapper<LongWritable, Text, PassageWritableCom
             IOException, InterruptedException {
         String line = value.toString();
         String[] words = line.split(COMMA, -1);
-        if (key.get() != 0 && !words[ARR_DELAY_NEW_NUMBER].equals(NO_DELAY)) {
+        if (key.get() != 0 && !words[ARR_DELAY_NEW_NUMBER].equals(NO_DELAY) && !words[ARR_DELAY_NEW_NUMBER].isEmpty()) {
             context.write(new PassageWritableComparable(Integer.parseInt(words[ARR_DELAY_NEW_NUMBER]), 1), new Text(words[DEST_AIRPORT_ID_NUMBER]));
         }
     }
