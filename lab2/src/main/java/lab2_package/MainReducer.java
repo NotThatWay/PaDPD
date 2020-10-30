@@ -26,6 +26,6 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
             sum += currDelay;
             number++;
         }
-        float avgDelay = 
+        float avgDelay = sum / number;
     }
 }
