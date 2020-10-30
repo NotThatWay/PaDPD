@@ -10,7 +10,9 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
     protected void reduce(PassageWritableComparable key, Iterable<Text> values, Context context) throws
             IOException, InterruptedException {
         Iterator iter = values.iterator();
-        
+        while (iter.hasNext()) {
+            
+        }
 
     }
 }
