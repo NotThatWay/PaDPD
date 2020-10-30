@@ -26,6 +26,7 @@ public class Main {
         job.setReducerClass(MainReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
+        job.setMapOutputKeyClass(PassageWritableComparable.class);
         job.setNumReduceTasks(2);
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
