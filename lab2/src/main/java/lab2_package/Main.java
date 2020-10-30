@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class Main {
     public static void main(String[] args) throws Exception {
         if (args.length != 3) {
-            System.err.println("Usage: Main <passages path> <aiports path> <output path>");
+            System.err.println("Usage: Main <passages path> <airports path> <output path>");
             System.exit(-1);
         }
         Job job = Job.getInstance();
