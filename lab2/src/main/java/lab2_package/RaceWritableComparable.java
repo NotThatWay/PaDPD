@@ -24,6 +24,12 @@ public class RaceWritableComparable implements WritableComparable {
 
     public int compareTo(RaceWritableComparable o) {
         if (this.getCode() > o.getCode()) {
+            return 1;
+        }
+        else if (this.getCode() < o.getCode()) {
+            return -1;
+        }
+        else {
             
         }
     }
