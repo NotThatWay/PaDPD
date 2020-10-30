@@ -14,7 +14,8 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
         float minDelay = 0;
         float maxDelay = Float.MAX_VALUE;
         while (iter.hasNext()) {
-            if (iter.)
+            float currDelay = Float.parseFloat(iter.next().toString());
+            if (iter.next)
         }
 
     }
