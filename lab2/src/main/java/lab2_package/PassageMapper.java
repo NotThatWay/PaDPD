@@ -1,4 +1,4 @@
 package lab2_package;
 
-public class PassageMapper {
+public class PassageMapper extends Mapper<> {
 }
