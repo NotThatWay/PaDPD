@@ -22,6 +22,7 @@ public class Main {
         MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, PassageMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(AirportPartitioner.class);
+        job.setGroupingComparatorClass(AirportWritableComparator.class);
         job.setReducerClass(WordReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
