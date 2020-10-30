@@ -1,4 +1,4 @@
 package lab2_package;
 
-public class MainReducer {
+public class MainReducer extends Reducer<>{
 }
