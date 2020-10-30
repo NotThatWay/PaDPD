@@ -12,6 +12,7 @@ public class PassageMapper extends Mapper<LongWritable, Text, PassageWritableCom
     public void map(LongWritable key, Text value, Context context) throws
             IOException, InterruptedException {
         String line = value.toString();
-        String[] words = line.split(COMMA).
+        String[] words = line.split(COMMA);
+        if (key.get() != 0)
     }
 }
