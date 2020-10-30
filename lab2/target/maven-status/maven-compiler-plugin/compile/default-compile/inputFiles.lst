@@ -1,3 +1,7 @@
-/home/haosfortum/IdeaProjects/lab1/src/main/java/Package/WordReducer.java
-/home/haosfortum/IdeaProjects/lab1/src/main/java/Package/WordMapper.java
-/home/haosfortum/IdeaProjects/lab1/src/main/java/Package/WordCountApp.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/AirportWritableComparator.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/Main.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/MainReducer.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/AirportMapper.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/AirportPartitioner.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/PassageWritableComparable.java
+/home/haosfortum/IdeaProjects/PaDPD/lab2/src/main/java/lab2_package/PassageMapper.java
