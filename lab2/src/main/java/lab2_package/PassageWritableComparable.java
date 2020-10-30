@@ -10,6 +10,8 @@ public class PassageWritableComparable implements WritableComparable<PassageWrit
     private int airportCode;
     private int flag;
 
+    public PassageWritableComparable() {}
+
     public PassageWritableComparable(int airportCode, int flag) {
         this.airportCode = airportCode;
         this.flag = flag;
