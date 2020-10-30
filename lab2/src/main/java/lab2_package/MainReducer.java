@@ -1,4 +1,8 @@
 package lab2_package;
 
-public class MainReducer extends Reducer<>{
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, Text> {
+    
 }
