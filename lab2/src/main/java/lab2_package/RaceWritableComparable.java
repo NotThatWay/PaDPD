@@ -1,4 +1,6 @@
 package lab2_package;
 
-public class RaceWritableComparable {
+import org.apache.hadoop.io.WritableComparable;
+
+public class RaceWritableComparable implements WritableComparable {
 }
