@@ -23,7 +23,7 @@ public class Main {
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(AirportPartitioner.class);
         job.setGroupingComparatorClass(AirportWritableComparator.class);
-        job.setReducerClass(WordReducer.class);
+        job.setReducerClass(MainReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         job.setNumReduceTasks(2);
