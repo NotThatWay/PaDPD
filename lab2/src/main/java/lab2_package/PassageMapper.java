@@ -7,8 +7,11 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 public class PassageMapper extends Mapper<LongWritable, Text, PassageWritableComparable, Text> {
+    private static final String COMMA = ",";
+
     public void map(LongWritable key, Text value, Context context) throws
             IOException, InterruptedException {
-        
+        String line = value.toString();
+        String[] words = line.split(COMMA).
     }
 }
