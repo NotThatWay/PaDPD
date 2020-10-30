@@ -6,7 +6,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 
 public class RaceWritableComparable implements WritableComparable {
-    public int compareTo(Object o) {
+    public int compareTo(RaceWritableComparable o) {
 
     }
 
@@ -18,5 +18,7 @@ public class RaceWritableComparable implements WritableComparable {
 
     }
 
-    
+    public int hashCode() {
+
+    }
 }
