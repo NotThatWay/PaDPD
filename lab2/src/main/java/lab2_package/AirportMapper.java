@@ -10,6 +10,6 @@ public class AirportMapper extends Mapper<LongWritable, Text, RaceWritableCompar
     public void map(LongWritable key, Text value, Context context) throws
             IOException, InterruptedException {
         String line = value.toString();
-        String[] words =
+        String[] words = line.replaceFirst()
     }
 }
