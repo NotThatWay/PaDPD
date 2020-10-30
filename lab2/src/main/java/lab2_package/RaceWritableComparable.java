@@ -6,6 +6,8 @@ import java.io.DataInput;
 import java.io.DataOutput;
 
 public class RaceWritableComparable implements WritableComparable {
+    private airportCode;
+    private 
 
     public RaceWritableComparable() {
 
