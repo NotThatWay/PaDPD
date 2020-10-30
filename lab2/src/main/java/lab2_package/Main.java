@@ -24,10 +24,10 @@ public class Main {
         job.setPartitionerClass(AirportPartitioner.class);
         job.setGroupingComparatorClass(AirportWritableComparator.class);
         job.setReducerClass(MainReducer.class);
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
         job.setMapOutputKeyClass(PassageWritableComparable.class);
         job.setMapOutputValueClass(Text.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
         job.setNumReduceTasks(2);
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
