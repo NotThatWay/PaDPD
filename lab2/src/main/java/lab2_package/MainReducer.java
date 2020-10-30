@@ -4,5 +4,5 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, Text> {
-
+    protected void reduce(PassageWritableComparable, Iterable<Text>)
 }
