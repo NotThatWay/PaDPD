@@ -28,6 +28,6 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
         }
         float avgDelay = sum / number;
 
-        context.write(airportName, new Text())
+        context.write(airportName, new Text(minDelay + ", " + maxDelay + ", " + avgDelay));
     }
 }
