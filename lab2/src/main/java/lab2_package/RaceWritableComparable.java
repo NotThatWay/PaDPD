@@ -43,7 +43,8 @@ public class RaceWritableComparable implements WritableComparable {
     }
 
     public int write(DataOutput out) {
-
+        out.writeInt(airportCode);
+        out.writeInt(flag);
     }
 
     public void readFields(DataInput in) {
