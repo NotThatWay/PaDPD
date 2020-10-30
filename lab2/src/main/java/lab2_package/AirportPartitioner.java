@@ -1,2 +1,5 @@
-package lab2_package;public class AirportPartitioner {
+package lab2_package;
+
+public class AirportPartitioner extends {
+
 }
