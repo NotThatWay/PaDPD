@@ -16,19 +16,21 @@ public class MainReducer extends Reducer<PassageWritableComparable, Text, Text, 
         float sum = 0;
         int number = 0;
         Text a = iter.next();
-        while (iter.hasNext()) {
-            float currDelay = Float.parseFloat(iter.next().toString());
-            if (currDelay > maxDelay) {
-                maxDelay = currDelay;
+        if (iter.hasNext()) {
+            while (iter.hasNext()) {
+                float currDelay = Float.parseFloat(iter.next().toString());
+                if (currDelay > maxDelay) {
+                    maxDelay = currDelay;
+                }
+                if (currDelay < minDelay) {
+                    minDelay = currDelay;
+                }
+                sum += currDelay;
+                number++;
             }
-            if (currDelay < minDelay) {
-                minDelay = currDelay;
-            }
-            sum += currDelay;
-            number++;
-        }
-        float avgDelay = sum / number;
+            float avgDelay = sum / number;
 
-        context.write(airportName, new Text(minDelay + ", " + maxDelay + ", " + avgDelay));
+            context.write(airportName, new Text(minDelay + ", " + maxDelay + ", " + avgDelay));
+        }
     }
 }
