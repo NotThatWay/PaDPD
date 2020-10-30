@@ -15,7 +15,7 @@ public class RaceWritableComparable implements WritableComparable {
     }
 
     public int compareTo(RaceWritableComparable o) {
-        
+        if 
     }
 
     public int write(DataOutput out) {
