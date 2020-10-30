@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class AirportMapper extends Mapper<LongWritable, Text, PassageWritableComparable, Text>  {
     private static final String COMMA = ",";
-    private static final String VERTICAL_SLASH = "|";
+    private static final String VERTICAL_SLASH = "\\|";
 
     public void map(LongWritable key, Text value, Context context) throws
             IOException, InterruptedException {

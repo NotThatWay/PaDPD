@@ -6,7 +6,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class PassageWritableComparable implements WritableComparable {
+public class PassageWritableComparable implements WritableComparable<PassageWritableComparable> {
     private int airportCode;
     private int flag;
 
@@ -31,15 +31,7 @@ public class PassageWritableComparable implements WritableComparable {
             return -1;
         }
         else {
-            if (this.getFlag() < o.getFlag()) {
-                return -1;
-            }
-            else if (this.getFlag() > o.getFlag()) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
+            return Integer.compare(this.getFlag(), o.getFlag());
         }
     }
 
@@ -53,7 +45,4 @@ public class PassageWritableComparable implements WritableComparable {
         flag = in.readInt();
     }
 
-    public int hashCode() {
-
-    }
 }
