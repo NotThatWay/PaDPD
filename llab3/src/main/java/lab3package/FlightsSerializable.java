@@ -29,7 +29,7 @@ public class FlightsSerializable implements Serializable {
                 (float)delays/flightsNumber*100);
     }
 
-    public FlightsSerializable addAirportsNames(Map<Integer,String> airports,)
+    public FlightsSerializable addAirportsNames(Map<Integer,String> airports, Tuple2<>)
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
         this.maxDelay = maxDelay;
