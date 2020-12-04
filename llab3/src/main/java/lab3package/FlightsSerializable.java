@@ -5,12 +5,13 @@ import java.util.Iterator;
 
 public class FlightsSerializable implements Serializable {
     public float maxDelay, percentDelay, percentCancelled;
-    public FlightsSerializable countDelays(Iterator<String> delays) {
+    public FlightsSerializable countDelays(Iterator<String> flights) {
         float currDelay = 0;
-        while (delays.hasNext()) {
-            String delay = delays.next();
-            if (currDelay < Float.parseFloat(delay) {
-                currDelay = delay;
+        while (flights.hasNext()) {
+            String flight = flights.next();
+            if (currDelay < Float.parseFloat(flight)) {
+                if (!flight.isEmpty())
+                currDelay = Float.parseFloat(flight);
             }
         }
     }
