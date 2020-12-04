@@ -51,6 +51,6 @@ public class FlightsSerializable implements Serializable {
     public String toString() {
         return originAirportName + " -> " + destinationAirportName +
                 "  MaxDelay: " + maxDelay + "  DelaysPercentage: " + percentDelay +
-                "  CancelledPercentage" + percentCancelled;
+                "  CancelledPercentage " + percentCancelled;
     }
 }
