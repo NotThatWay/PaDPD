@@ -15,7 +15,7 @@ public class FlightsSerializable implements Serializable {
                 cancelled++;
             }
             else if (flight.equals(NO_DELAY)) {
-
+                
             }
             currDelay = Float.parseFloat(flight);
         }
