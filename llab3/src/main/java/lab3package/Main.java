@@ -20,7 +20,7 @@ public class Main {
     private static final int AIRPORT_ORIGIN = 11;
     private static final int AIRPORT_DESTINATION = 14;
     private static final int DELAY = 18;
-    private static final String QUOTES = "\""
+    private static final String QUOTES = "\"";
 
 
 
@@ -37,7 +37,7 @@ public class Main {
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(AIRPORTS_TITLE))
                 .map(x -> x.replaceFirst(AIR_PRE_DELIMETER, AIR_FINAL_DELIMETER).replaceAll(QUOTES, "").split(AIR_FINAL_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
-        JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains(FLIGHTS_TITLE))
+        JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> !x.contains(FLIGHTS_TITLE))
                 .map(x -> x.split(FLIGHT_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION])), x[DELAY]))
                 .groupByKey().mapValues(x -> FlightsSerializable.countDelays(x.iterator()));
