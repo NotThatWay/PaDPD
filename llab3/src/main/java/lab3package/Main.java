@@ -40,7 +40,7 @@ public class Main {
         Map<Integer,String> stringAirportDataMap = airportPair.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(stringAirportDataMap);
         JavaRDD<FlightsSerializable> airportsDelayInfo = delaysAndCancelled
-                .map(x -> x._2.addAirportsNames(airportsBroadcasted.value(), ))
+                .map(x -> x._2.addAirportsNames(airportsBroadcasted.value(), x._1()))
     }
 }
 
