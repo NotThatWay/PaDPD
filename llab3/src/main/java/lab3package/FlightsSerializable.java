@@ -28,6 +28,8 @@ public class FlightsSerializable implements Serializable {
                 (float)delays/flightsNumber*100);
     }
 
+    public 
+
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
         this.maxDelay = maxDelay;
         this.percentDelay = percentDelay;
