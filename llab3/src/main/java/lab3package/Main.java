@@ -2,6 +2,7 @@ package lab3package;
 
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
@@ -11,7 +12,7 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> airports = sc.textFile("airports.csv");
         JavaRDD<String> flights = sc.textFile("passages.csv");
-        
+        JavaPairRDD<Long,>
 
     }
 }
