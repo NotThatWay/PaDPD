@@ -20,7 +20,8 @@ public class Main {
         JavaRDD<String> airports = sc.textFile(AIRPORTS_FILE);
         JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
         JavaPairRDD<Long,String> airportPair = airports.filter(x -> !x.contains(TITLE))
-                .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER)).replaceAll()
+                .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER).split(FINAL_DELIMETER))
+                .mapToPair()
 
     }
 }
