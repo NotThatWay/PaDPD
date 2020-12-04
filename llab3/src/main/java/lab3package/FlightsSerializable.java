@@ -2,6 +2,7 @@ package lab3package;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.Map;
 
 public class FlightsSerializable implements Serializable {
     public float maxDelay, percentDelay, percentCancelled;
@@ -28,7 +29,7 @@ public class FlightsSerializable implements Serializable {
                 (float)delays/flightsNumber*100);
     }
 
-    public FlightsSerializable addAirportsNames()
+    public FlightsSerializable addAirportsNames(Map<Integer,String> airports,)
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
         this.maxDelay = maxDelay;
