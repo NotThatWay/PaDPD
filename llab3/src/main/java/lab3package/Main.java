@@ -37,7 +37,7 @@ public class Main {
                 .mapToPair(x -> new Tuple2<>(new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION])), x[DELAY]))
                 .groupByKey().mapValues(x -> FlightsSerializable.countDelays(x.iterator()));
         Map<Integer,String> stringAirportDataMap = airportPair.collectAsMap();
-        
+        final Broadcast<Map<String, AirportData>> airportsBroadcasted = sc.broadcast(stringAirportDataMap);
     }
 }
 
