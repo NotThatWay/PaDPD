@@ -13,7 +13,7 @@ public class FlightsSerializable implements Serializable {
         while (flights.hasNext()) {
             String flight = flights.next();
             flightsNumber++;
-            if (!flight.isEmpty()) {
+            if (flight.isEmpty()) {
                 cancelled++;
             }
             else if (!flight.equals(NO_DELAY)) {
