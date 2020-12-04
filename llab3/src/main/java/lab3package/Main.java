@@ -10,8 +10,6 @@ import scala.Tuple2;
 import java.util.Map;
 
 public class Main {
-    private static final String AIRPORTS_FILE = "airports.csv";
-    private static final String FLIGHTS_FILE = "passages.csv";
     private static final String AIRPORTS_TITLE = "Code,Description";
     private static final String AIR_PRE_DELIMETER = ",";
     private static final String AIR_FINAL_DELIMETER = "%::#%;##%#";
@@ -22,16 +20,22 @@ public class Main {
     private static final int AIRPORT_ORIGIN = 11;
     private static final int AIRPORT_DESTINATION = 14;
     private static final int DELAY = 18;
+    private static final String QUOTES = "\""
 
 
 
     public static void main(String[] args) {
+        if (args.length != 2) {
+            System.err.println("Usage: Main <passages path> <airports path>");
+            System.exit(-1);
+        }
+
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> airports = sc.textFile(AIRPORTS_FILE);
-        JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
+        JavaRDD<String> airports = sc.textFile(args[1]);
+        JavaRDD<String> flights = sc.textFile(args[0]);
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(AIRPORTS_TITLE))
-                .map(x -> x.replaceFirst(AIR_PRE_DELIMETER, AIR_FINAL_DELIMETER).split(AIR_FINAL_DELIMETER))
+                .map(x -> x.replaceFirst(AIR_PRE_DELIMETER, AIR_FINAL_DELIMETER).replaceAll(QUOTES, "").split(AIR_FINAL_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
         JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains(FLIGHTS_TITLE))
                 .map(x -> x.split(FLIGHT_DELIMETER))
