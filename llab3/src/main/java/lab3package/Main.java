@@ -12,7 +12,9 @@ public class Main {
     private static final String FLIGHTS_FILE = "passages.csv";
     private static final String TITLE = "Code,Description";
     private static final String PRE_DELIMETER = ",";
-    private static final String FINAL_DELIMETER = "$%#$%#$#%#";
+    private static final String FINAL_DELIMETER = "%::#%;##%#";
+    private static final int AIRPORT_ID_COLUMN = 0;
+    private static final int AIRPORT_NAME_COLUMN = 1;
 
 
     public static void main(String[] args) {
@@ -22,8 +24,8 @@ public class Main {
         JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(TITLE))
                 .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER).split(FINAL_DELIMETER))
-                .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[0]), Integer.parseInt(x[1])));
-
+                .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
+        JavaPairRDD<>
     }
 }
 
