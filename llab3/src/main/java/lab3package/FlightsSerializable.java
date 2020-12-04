@@ -47,4 +47,6 @@ public class FlightsSerializable implements Serializable {
         this.percentDelay = percentDelay;
         this.percentCancelled = percentCancelled;
     }
+
+
 }
