@@ -1,5 +1,7 @@
 package lab3package;
 
+import scala.Tuple2;
+
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,7 +31,9 @@ public class FlightsSerializable implements Serializable {
                 (float)delays/flightsNumber*100);
     }
 
-    public FlightsSerializable addAirportsNames(Map<Integer,String> airports, Tuple2<>)
+    public FlightsSerializable addAirportsNames(Map<Integer,String> airports, Tuple2<Integer,Integer>) {
+        
+    }
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
         this.maxDelay = maxDelay;
