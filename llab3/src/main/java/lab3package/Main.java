@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> airports = new JavaRDD<String>("airports.csv");
+        JavaRDD<String> airports = new sc.textFile("airports.csv");
         JavaRDD<String> flights = new JavaRDD<String>("passages.csv");
-        
+
     }
 }
 
