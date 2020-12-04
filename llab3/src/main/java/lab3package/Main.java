@@ -13,7 +13,7 @@ public class Main {
     private static final String AIRPORTS_TITLE = "Code,Description";
     private static final String AIR_PRE_DELIMETER = ",";
     private static final String AIR_FINAL_DELIMETER = "%::#%;##%#";
-    private static final String DELIMETER = ",";
+    private static final String FLIGHT_DELIMETER = ",";
     private static final int AIRPORT_ID_COLUMN = 0;
     private static final int AIRPORT_NAME_COLUMN = 1;
     private static final String FLIGHTS_TITLE = "\"YEAR\",\"QUARTER\",\"MONTH\",\"DAY_OF_MONTH\",\"DAY_OF_WEEK\"";
@@ -28,7 +28,7 @@ public class Main {
                 .map(x -> x.replaceFirst(AIR_PRE_DELIMETER, AIR_FINAL_DELIMETER).split(AIR_FINAL_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
         JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains())
-                .split("")
+                .split(FLIGHT_DELIMETER)
     }
 }
 
