@@ -5,6 +5,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
 
 public class Main {
     private static final String AIRPORTS_FILE = "airports.csv";
@@ -19,9 +20,9 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> airports = sc.textFile(AIRPORTS_FILE);
         JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
-        JavaPairRDD<Long,String> airportPair = airports.filter(x -> !x.contains(TITLE))
+        JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(TITLE))
                 .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER).split(FINAL_DELIMETER))
-                .mapToPair()
+                .mapToPair(x -> new Tuple2<>(Integer.parseInt()))
 
     }
 }
