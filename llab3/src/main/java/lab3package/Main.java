@@ -6,6 +6,7 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
+import java.util.Map;
 
 public class Main {
     private static final String AIRPORTS_FILE = "airports.csv";
@@ -35,7 +36,7 @@ public class Main {
                 .map(x -> x.split(FLIGHT_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION])), x[DELAY]))
                 .groupByKey().mapValues(x -> FlightsSerializable.countDelays(x.iterator()));
-        Map<Integer,>
+        Map<Integer,String>
     }
 }
 
