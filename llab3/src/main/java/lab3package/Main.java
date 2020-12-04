@@ -11,6 +11,7 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> airports = sc.textFile("airports.csv");
         JavaRDD<String> flights = sc.textFile("passages.csv");
+        
 
     }
 }
