@@ -15,6 +15,7 @@ public class Main {
     private static final String FINAL_DELIMETER = "%::#%;##%#";
     private static final int AIRPORT_ID_COLUMN = 0;
     private static final int AIRPORT_NAME_COLUMN = 1;
+    private static final String FLIGHTS_TITLE = "Code,Description";
 
 
     public static void main(String[] args) {
