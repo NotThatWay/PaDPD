@@ -22,7 +22,7 @@ public class Main {
         JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(TITLE))
                 .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER).split(FINAL_DELIMETER))
-                .mapToPair(x -> new Tuple2<>(Integer.parseInt()))
+                .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[0]), Integer.parseInt(x[1])));
 
     }
 }
