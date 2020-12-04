@@ -48,5 +48,5 @@ public class FlightsSerializable implements Serializable {
         this.percentCancelled = percentCancelled;
     }
 
-
+    public String toString()
 }
