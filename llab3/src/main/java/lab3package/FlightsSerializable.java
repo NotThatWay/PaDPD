@@ -22,7 +22,6 @@ public class FlightsSerializable implements Serializable {
                     currDelay = Float.parseFloat(flight);
                 }
             }
-
         }
     }
 
