@@ -8,7 +8,10 @@ public class FlightsSerializable implements Serializable {
     public FlightsSerializable countDelays(Iterator<String> delays) {
         float currDelay = 0;
         while (delays.hasNext()) {
-            
+            String delay = delays.next();
+            if (currDelay < Float.parseFloat(delay) {
+                currDelay = delay;
+            }
         }
     }
 
