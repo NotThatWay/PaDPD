@@ -39,7 +39,7 @@ public class Main {
                 .groupByKey().mapValues(x -> FlightsSerializable.countDelays(x.iterator()));
         Map<Integer,String> stringAirportDataMap = airportPair.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(stringAirportDataMap);
-        JavaRDD<FlightsSerializable> airportsDelayInfo = delaysAndCancelled.map(x -> x._2.addAirportsNames)
+        JavaRDD<FlightsSerializable> airportsDelayInfo = delaysAndCancelled.map(x -> x._2.addAirportsNames())
     }
 }
 
