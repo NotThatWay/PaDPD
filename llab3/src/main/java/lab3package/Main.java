@@ -27,8 +27,8 @@ public class Main {
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(AIRPORTS_TITLE))
                 .map(x -> x.replaceFirst(AIR_PRE_DELIMETER, AIR_FINAL_DELIMETER).split(AIR_FINAL_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
-        JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains())
-                .split(FLIGHT_DELIMETER)
+        JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains(FLIGHTS_TITLE))
+                .map(x -> x.split(FLIGHT_DELIMETER)) 
     }
 }
 
