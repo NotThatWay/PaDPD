@@ -49,6 +49,7 @@ public class FlightsSerializable implements Serializable {
     }
 
     public String toString() {
-        return originAirportName
+        return originAirportName + " -> " + destinationAirportName +
+                "  MaxDelay: " +
     }
 }
