@@ -5,10 +5,11 @@ import java.util.Iterator;
 
 public class FlightsSerializable implements Serializable {
     public float maxDelay, percentDelay, percentCancelled;
+    private final static String NO_DELAY = "0.00";
     public FlightsSerializable countDelays(Iterator<String> flights) {
         float currDelay = 0;
         int delays = 0, cancelled = 0, flightsNumber = 0;
-        final static String NO_DELAY = "0.00";
+
         while (flights.hasNext()) {
             String flight = flights.next();
             flightsNumber++;
@@ -21,7 +22,7 @@ public class FlightsSerializable implements Serializable {
                     currDelay = Float.parseFloat(flight);
                 }
             }
-            
+
         }
     }
 
