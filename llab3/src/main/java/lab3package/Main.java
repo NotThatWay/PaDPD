@@ -19,6 +19,7 @@ public class Main {
     private static final String FLIGHTS_TITLE = "\"YEAR\",\"QUARTER\",\"MONTH\",\"DAY_OF_MONTH\",\"DAY_OF_WEEK\"";
     private static final int AIRPORT_ORIGIN = 11;
     private static final int AIRPORT_DESTINATION = 14;
+    private static final int DELAY = 18;
 
 
 
@@ -32,7 +33,7 @@ public class Main {
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
         JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains(FLIGHTS_TITLE))
                 .map(x -> x.split(FLIGHT_DELIMETER))
-                .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION])), FlightsSerializable.countDelays)
+                .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION]), x[DELAY]))
     }
 }
 
