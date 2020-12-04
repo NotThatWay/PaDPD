@@ -25,7 +25,7 @@ public class Main {
         JavaPairRDD<Integer,String> airportPair = airports.filter(x -> !x.contains(TITLE))
                 .map(x -> x.replaceFirst(PRE_DELIMETER, FINAL_DELIMETER).split(FINAL_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(Integer.parseInt(x[AIRPORT_ID_COLUMN]), x[AIRPORT_NAME_COLUMN]));
-        JavaPairRDD<>
+
     }
 }
 

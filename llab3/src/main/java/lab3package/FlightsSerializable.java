@@ -1,2 +1,4 @@
-package lab3package;public class FlightsSerializable {
+package lab3package;
+
+public class FlightsSerializable {
 }
