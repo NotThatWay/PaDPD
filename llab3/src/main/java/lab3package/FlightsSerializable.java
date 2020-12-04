@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class FlightsSerializable implements Serializable {
     public float maxDelay, percentDelay, percentCancelled;
+    public float originAirportID, destinationAirportID;
+    public String originAirportName, destinationAirportName;
+
     private final static String NO_DELAY = "0.00";
     public static FlightsSerializable countDelays(Iterator<String> flights) {
         float currDelay = 0;
@@ -32,7 +35,7 @@ public class FlightsSerializable implements Serializable {
     }
 
     public FlightsSerializable addAirportsNames(Map<Integer,String> airports, Tuple2<Integer,Integer>) {
-        
+        originAirportID = 
     }
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
