@@ -23,6 +23,9 @@ public class FlightsSerializable implements Serializable {
                 }
             }
         }
+        return new FlightsSerializable(currDelay,
+                (float)cancelled/flightsNumber*100,
+                (float)delays/flightsNumber*100);
     }
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
