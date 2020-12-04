@@ -16,7 +16,7 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> airports = sc.textFile(AIRPORTS_FILE);
         JavaRDD<String> flights = sc.textFile(FLIGHTS_FILE);
-        JavaPairRDD<Long,String> airportPair = airports.filter(x -> !x.contains(TITLE)).
+        JavaPairRDD<Long,String> airportPair = airports.filter(x -> !x.contains(TITLE)).replaceFirst()
 
     }
 }
