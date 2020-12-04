@@ -15,11 +15,13 @@ public class FlightsSerializable implements Serializable {
             if (!flight.isEmpty()) {
                 cancelled++;
             }
-            else if (flight.equals(NO_DELAY)) {
+            else if (!flight.equals(NO_DELAY)) {
                 delays++;
+                if (currDelay < Float.parseFloat(flight)) {
+                    currDelay = Float.parseFloat(flight);
+                }
             }
-            else
-            currDelay = Float.parseFloat(flight);
+            
         }
     }
 
