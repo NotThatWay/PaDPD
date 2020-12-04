@@ -37,7 +37,8 @@ public class FlightsSerializable implements Serializable {
     public FlightsSerializable addAirportsNames(Map<Integer,String> airports, Tuple2<Integer,Integer> airportIDs) {
         originAirportID = airportIDs._1();
         destinationAirportID = airportIDs._2();
-        
+        originAirportName = airports.get(airportIDs._1());
+        destinationAirportName = airports.get(airportIDs._2());
     }
 
     public FlightsSerializable(float maxDelay, float percentCancelled, float percentDelay) {
