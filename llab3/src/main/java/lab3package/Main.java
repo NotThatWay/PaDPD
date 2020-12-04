@@ -34,7 +34,7 @@ public class Main {
         JavaPairRDD<Tuple2<Integer,Integer>,FlightsSerializable> delaysAndCancelled = flights.filter(x -> x.contains(FLIGHTS_TITLE))
                 .map(x -> x.split(FLIGHT_DELIMETER))
                 .mapToPair(x -> new Tuple2<>(new Tuple2<>(Integer.parseInt(x[AIRPORT_ORIGIN]), Integer.parseInt(x[AIRPORT_DESTINATION])), x[DELAY]))
-                .groupByKey().mapValues()
+                .groupByKey().mapValues(x -> FlightsSerializable.countDelays)
     }
 }
 
