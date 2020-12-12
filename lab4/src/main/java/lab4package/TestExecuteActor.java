@@ -19,6 +19,7 @@ public class TestExecuteActor extends AbstractActor {
     }
 
     public static Result executeTest(ExecuteMessage message) throws ScriptException, NoSuchMethodException {
+        Result result = new Result();
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(message.code);
         Invocable invocable = (Invocable) engine;
@@ -26,6 +27,7 @@ public class TestExecuteActor extends AbstractActor {
             String testResult = invocable.invokeFunction(message.functionName, test.params).toString();
             if (testResult.equals(test.expectedResult)) {
                 System.out.printf("%s: %s,  SUCCESS!", message.id, test.testName);
+                result.put(test.)
             }
             else {
                 System.out.printf("%s: %s,  FAIL!", message.id, test.testName);
