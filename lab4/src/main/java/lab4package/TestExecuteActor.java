@@ -14,8 +14,8 @@ public class TestExecuteActor extends AbstractActor {
                 .match(ExecuteMessage.class, message -> {
                     System.out.printf("EXECUTE %s\n", message.toString());
                     Result result = executeTest(message);
-                    sender().tell(new StoredMessage(message.id, result), self())
-                })
+                    sender().tell(new StoredMessage(message.id, result), self());
+                }).build();
     }
 
     public static Result executeTest(ExecuteMessage message) throws ScriptException, NoSuchMethodException {
