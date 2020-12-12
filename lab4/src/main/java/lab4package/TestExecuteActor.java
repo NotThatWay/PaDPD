@@ -17,7 +17,7 @@ public class TestExecuteActor extends AbstractActor {
     }
 
     public static Result executeTest(ExecuteMessage message) {
-        ScriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-        
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+        engine.eval()
     }
 }
