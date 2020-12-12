@@ -1,4 +1,9 @@
 package lab4package;
 
-public class TestExecuteActor {
+import akka.actor.AbstractActor;
+
+public class TestExecuteActor extends AbstractActor {
+    public Receive createReceive() {
+
+    }
 }

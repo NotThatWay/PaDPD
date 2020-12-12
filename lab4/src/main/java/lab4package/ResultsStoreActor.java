@@ -1,4 +1,9 @@
 package lab4package;
 
-public class ResultsStoreActor {
+import akka.actor.AbstractActor;
+
+public class ResultsStoreActor extends AbstractActor {
+    public Receive createReceive() {
+
+    }
 }
