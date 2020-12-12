@@ -12,7 +12,7 @@ public class ResultsStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create().
                 match(StoredMessage.class, message -> {
-                    System.out.printf("GET %s\n", message.toString());
+                    System.out.printf("STORE %s\n", message.toString());
                     results.put(message.id, message.result);
                 })
                 .match(RetrievedMessage.class, message -> {
