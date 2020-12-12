@@ -1,2 +1,4 @@
-package lab4package;public class ResultsStoreActor {
+package lab4package;
+
+public class ResultsStoreActor {
 }
