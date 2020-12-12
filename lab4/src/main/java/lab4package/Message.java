@@ -2,14 +2,14 @@ package lab4package;
 
 public class Message {
     public String id;
-    public Results results;
+    public Result result;
 
-    public Message(String id, Results results) {
+    public Message(String id, Result result) {
         this.id = id;
-        this.results = results;
+        this.result = result;
     }
 
     public String toString() {
-        return String.format("(%s - %s)", this.id);
+        return String.format("(%s - %s)", this.id, this.result);
     }
 }
