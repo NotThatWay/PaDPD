@@ -18,12 +18,12 @@ public class TestExecuteActor extends AbstractActor {
                 })
     }
 
-    public static Result executeTest(ExecuteMessage message) throws ScriptException {
+    public static Result executeTest(ExecuteMessage message) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(message.code);
         Invocable invocable = (Invocable) engine;
         for (Test test : message.tests) {
-            String result = invocable.invokeFunction(message.functionName, )
+            String result = invocable.invokeFunction(message.functionName, test.params).toString();
         }
     }
 }
