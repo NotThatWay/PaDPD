@@ -1,4 +1,9 @@
 package lab4package;
 
 public class Results {
-    public Result()
+    public 
+
+    public Result() {
+
+    }
+}
