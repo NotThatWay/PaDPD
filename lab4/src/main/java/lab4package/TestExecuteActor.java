@@ -23,8 +23,8 @@ public class TestExecuteActor extends AbstractActor {
         engine.eval(message.code);
         Invocable invocable = (Invocable) engine;
         for (Test test : message.tests) {
-            String result = invocable.invokeFunction(message.functionName, test.params).toString();
-            if (result.equals(test.expectedResult)) {
+            String testResult = invocable.invokeFunction(message.functionName, test.params).toString();
+            if (testResult.equals(test.expectedResult)) {
                 System.out.printf("%s: %s,  SUCCESS!", message.id, test.testName);
             }
             else {
