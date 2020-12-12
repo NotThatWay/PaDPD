@@ -1,9 +1,13 @@
 package lab4package;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Results {
-    public 
+    public Map<String,Boolean> results;
 
-    public Result() {
-
+    public Results() {
+        results = new HashMap<String,Boolean>();
     }
+
 }
