@@ -1,10 +1,10 @@
 package lab4package;
 
-public class Message {
+public class StoredMessage {
     public String id;
     public Result result;
 
-    public Message(String id, Result result) {
+    public StoredMessage(String id, Result result) {
         this.id = id;
         this.result = result;
     }

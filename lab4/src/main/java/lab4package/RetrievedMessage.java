@@ -1,2 +1,4 @@
-package lab4package;public class RetrievedMessage {
+package lab4package;
+
+public class RetrievedMessage {
 }
