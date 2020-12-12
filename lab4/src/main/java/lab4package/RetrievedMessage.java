@@ -6,4 +6,8 @@ public class RetrievedMessage {
     public RetrievedMessage(String id) {
         this.id = id;
     }
+
+    public String toString() {
+        
+    }
 }
