@@ -31,6 +31,6 @@ public class TestExecuteActor extends AbstractActor {
                 System.out.printf("%s: %s,  FAIL!", message.id, test.testName);
             }
         }
-        return 
+        return
     }
 }
