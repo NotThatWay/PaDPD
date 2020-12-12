@@ -1,2 +1,5 @@
-package lab4package;public class Results {
+package lab4package;
+
+public class Results {
+    
 }
