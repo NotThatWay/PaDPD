@@ -6,6 +6,8 @@ import akka.japi.pf.ReceiveBuilder;
 public class TestExecuteActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match()
+                .match(ExecuteMessage.class, message -> {
+                    System.out.printf("EXECUTE %s\n", message.toString())
+                })
     }
 }
