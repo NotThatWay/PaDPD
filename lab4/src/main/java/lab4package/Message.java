@@ -2,7 +2,7 @@ package lab4package;
 
 public class Message {
     public String id;
-//    public
+    public 
 
     public Message(String id) {
         this.id = id;
