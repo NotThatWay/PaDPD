@@ -1,2 +1,4 @@
-package lab4package;public class ExecuteMessage {
+package lab4package;
+
+public class ExecuteMessage {
 }
