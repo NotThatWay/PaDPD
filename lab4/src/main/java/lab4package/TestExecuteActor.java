@@ -21,6 +21,7 @@ public class TestExecuteActor extends AbstractActor {
     public static Result executeTest(ExecuteMessage message) throws ScriptException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(message.code);
-        Invocable invocable = ()
+        Invocable invocable = (Invocable) engine;
+        
     }
 }
