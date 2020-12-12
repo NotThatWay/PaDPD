@@ -1,9 +1,11 @@
 package lab4package;
 
 public class Test {
-    public 
+    public String testName;
+    public String expectedResult;
+    public Object[] params;
 
-    public Test() {
+    public Test(String testName, String expectedResult, ) {
 
     }
 }
