@@ -18,6 +18,6 @@ public class ResultsStoreActor extends AbstractActor {
                 .match(RetrievedMessage.class, message -> {
                     System.out.println(message.toString());
                     sender().tell(new StoredMessage(message.id, results.(message.id)), self());
-                })
+                }).build();
     }
 }
