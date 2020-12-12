@@ -5,6 +5,7 @@ import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 public class TestExecuteActor extends AbstractActor {
     public Receive createReceive() {
@@ -16,8 +17,8 @@ public class TestExecuteActor extends AbstractActor {
                 })
     }
 
-    public static Result executeTest(ExecuteMessage message) {
+    public static Result executeTest(ExecuteMessage message) throws ScriptException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval()
+        engine.eval(message.code);
     }
 }
