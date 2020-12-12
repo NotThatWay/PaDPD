@@ -8,6 +8,6 @@ public class RetrievedMessage {
     }
 
     public String toString() {
-        
+        return id;
     }
 }
