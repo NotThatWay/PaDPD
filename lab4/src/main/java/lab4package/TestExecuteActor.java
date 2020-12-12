@@ -26,7 +26,9 @@ public class TestExecuteActor extends AbstractActor {
             String result = invocable.invokeFunction(message.functionName, test.params).toString();
             if (result.equals(test.expectedResult)) {
                 System.out.printf("%s: %s,  SUCCESS!", message.id, test.testName);
-                
+            }
+            else {
+                System.out.printf("%s: %s,  FAIL!", message.id, test.testName);
             }
         }
     }
