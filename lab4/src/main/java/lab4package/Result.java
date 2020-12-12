@@ -10,6 +10,6 @@ public class Result {
         results = new HashMap<String,Boolean>();
     }
 
-    public 
+
 
 }
