@@ -16,7 +16,7 @@ public class ResultsStoreActor extends AbstractActor {
                     results.put(message.id, message.result);
                 })
                 .match(RetrievedMessage.class, message -> {
-                    System.out.printf(""message.toString());
+                    System.out.printf("GET %s\n", message.toString());
                     sender().tell(new StoredMessage(message.id, results.get(message.id)), self());
                 }).build();
     }
