@@ -9,6 +9,6 @@ public class Message {
     }
 
     public String toString() {
-        
+        return String.format("(%s - %s)", this.id);
     }
 }
