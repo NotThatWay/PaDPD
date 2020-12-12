@@ -14,7 +14,7 @@ public class TestExecuteActor extends AbstractActor {
                 .match(ExecuteMessage.class, message -> {
                     System.out.printf("EXECUTE %s\n", message.toString());
                     Result result = executeTest(message);
-                    sender().tell(new StoredMessage(message.id, ))
+                    sender().tell(new StoredMessage(message.id, result))
                 })
     }
 
