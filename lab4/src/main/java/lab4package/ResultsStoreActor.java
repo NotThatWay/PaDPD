@@ -2,8 +2,6 @@ package lab4package;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-import lab4package.StoredMessage;
-import lab4package.Result;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +12,11 @@ public class ResultsStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create().
                 match(StoredMessage.class, message -> {
-                    System.out.printf(message.toString());
+                    System.out.println(message.toString());
                     results.put(message.id, message.result);
                 })
-                .match()
+                .match(RetrievedMessage.class, message -> {
+                    System.out.println(message.toString());
+                })
     }
 }
