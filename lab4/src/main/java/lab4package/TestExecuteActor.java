@@ -13,8 +13,8 @@ public class TestExecuteActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(ExecuteMessage.class, message -> {
                     System.out.printf("EXECUTE %s\n", message.toString());
-                    Result result = ...;
-                    sender.tell(new StoredMessage(message.id, ))
+                    Result result = executeTest(message);
+                    sender().tell(new StoredMessage(message.id, ))
                 })
     }
 
@@ -22,6 +22,6 @@ public class TestExecuteActor extends AbstractActor {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(message.code);
         Invocable invocable = (Invocable) engine;
-        
+
     }
 }
