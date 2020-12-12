@@ -2,10 +2,11 @@ package lab4package;
 
 public class Message {
     public String id;
-    public 
+    public Results results;
 
-    public Message(String id) {
+    public Message(String id, Results results) {
         this.id = id;
+        this.results = results;
     }
 
     public String toString() {

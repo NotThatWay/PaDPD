@@ -9,7 +9,7 @@ public class ResultsStoreActor extends AbstractActor {
         return ReceiveBuilder.create().
                 match(Message.class, message -> {
                     System.out.printf(message.toString());
-
+                    
                 })
     }
 }
