@@ -26,7 +26,7 @@ public class Server {
     }
 
     public Route getRoute() {
-        Directives.route(Directives.path("execute", () ->
+        return Directives.route(Directives.path("execute", () ->
                 Directives.route(Directives.post(() ->
                         Directives.entity(Jackson.unmarshaller(RetrieveResults.class), body -> {
                             actorRef.tell(new ExecuteMessage(body.id, body.functionName, body.jsScript, body.tests), ActorRef.noSender());
@@ -35,7 +35,7 @@ public class Server {
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
                         Directives.parameter("packageID", id -> {
                             Future<Object> future = Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
-                            StoredMessage res;
+                            StoredMessage res = null;
                             try {
                                 res = (StoredMessage) Await.result(future, FUTURE_TIMEOUT.duration());
                             } catch (Exception e) {
@@ -45,7 +45,9 @@ public class Server {
                             if (res != null && res.result != null) {
                                 return Directives.complete(StatusCodes.OK, res.result.toJSON() + "\n");
                             }
+                            return null;
                         })))),
                 Directives.complete(StatusCodes.NOT_FOUND, "Wrong request\n")
+        );
     }
 }
