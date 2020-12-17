@@ -15,6 +15,7 @@ public class Server {
     }
 
     public Route getRoute() {
-        Directives.route()
+        Directives.route(Directives.path("execute", () ->
+                Directives.route()))
     }
 }
