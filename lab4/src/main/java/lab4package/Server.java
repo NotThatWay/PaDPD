@@ -2,6 +2,7 @@ package lab4package;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.http.javadsl.server.Directives;
 import akka.http.javadsl.server.Route;
 
 public class Server {
@@ -14,6 +15,6 @@ public class Server {
     }
 
     public Route getRoute() {
-        
+        Directives.route()
     }
 }
