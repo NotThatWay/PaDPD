@@ -3,6 +3,7 @@ package lab4package;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.marshallers.jackson.Jackson;
+import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Directives;
 import akka.http.javadsl.server.Route;
 
@@ -21,6 +22,7 @@ public class Server {
                         Directives.entity(Jackson.unmarshaller(RetrieveResults.class), body -> {
                             actorRef.tell(new ExecuteMessage(body.id, body.functionName, body.jsScript, body.tests)
                             ), ActorRef.noSender());
-                        })))))
+                return Directives.complete(StatusCodes.OK, String.format("Package %s started"))
+                        }))))
     }
 }
