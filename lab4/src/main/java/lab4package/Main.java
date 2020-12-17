@@ -25,7 +25,7 @@ public class Main {
         CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp.toHost(IP, PORT), actorMaterializer);
         System.out.printf("Server listening on %s:%d\n", IP, PORT);
         System.in.read();
-        binding.thenCompose(ServerBinding::unbind).thenAccept(unbound -> )
+        binding.thenCompose(ServerBinding::unbind).thenAccept(unbound -> actorSystem.terminate());
 
     }
 }
