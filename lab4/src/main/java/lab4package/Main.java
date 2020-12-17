@@ -22,7 +22,10 @@ public class Main {
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
         Server server = new Server(actorSystem);
         Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.getRoute().flow(actorSystem, actorMaterializer);
-        CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp.toHost())
+        CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp.toHost(IP, PORT), actorMaterializer);
+        System.out.printf("Server listening on %s:%d\n", IP, PORT);
+        System.in.read();
+        
 
     }
 }
