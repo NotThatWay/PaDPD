@@ -7,11 +7,12 @@ import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Directives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
+import akka.util.Timeout;
 
 import java.util.concurrent.Future;
 
 public class Server {
-    static final FUTURE_TIMEOUT
+    static final Timeout FUTURE_TIMEOUT = Timeout.create()
 
     ActorSystem actorSystem;
     ActorRef actorRef;
