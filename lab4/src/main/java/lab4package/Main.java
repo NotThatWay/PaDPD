@@ -10,13 +10,14 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class Main {
     static final String IP = "localhost";
     static final int PORT = 6111;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("lab4");
         Http http = Http.get(actorSystem);
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
