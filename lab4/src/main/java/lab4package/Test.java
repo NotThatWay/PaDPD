@@ -10,4 +10,6 @@ public class Test {
         this.expectedResult = expectedResult;
         this.params = params;
     }
+
+    public Test() {}
 }

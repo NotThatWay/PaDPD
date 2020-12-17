@@ -12,4 +12,6 @@ public class RetrieveResults {
         this.jsScript = jsScript;
         this.tests = tests;
     }
+
+    public RetrieveResults() {}
 }
