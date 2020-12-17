@@ -10,6 +10,8 @@ import akka.pattern.Patterns;
 import akka.util.Timeout;
 
 import java.time.Duration;
+
+import scala.concurrent.Await;
 import scala.concurrent.Future;
 
 public class Server {
@@ -34,8 +36,7 @@ public class Server {
                         Directives.parameter("packageID", id -> {
                             Future<Object> future =
                                     Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
-                            StoredMessage res;
-                            
+                            StoredMessage res = Await.result(future, FUTURE_TIMEOUT, )
                         })))))
     }
 }
