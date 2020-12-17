@@ -24,6 +24,6 @@ public class Server {
                             return Directives.complete(StatusCodes.OK, String.format("Package %s started\n", body.id));
                         })))),
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
-                        Directives.parameter((""))))))
+                        Directives.parameter(("packageID", id ->))))))
     }
 }
