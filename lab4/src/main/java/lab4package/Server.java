@@ -18,6 +18,6 @@ public class Server {
     public Route getRoute() {
         Directives.route(Directives.path("execute", () ->
                 Directives.route(Directives.post(() ->
-                        Directives.entity(Jackson.unmarshaller())))))
+                        Directives.entity(Jackson.unmarshaller(RetrieveResults.class))))))
     }
 }
