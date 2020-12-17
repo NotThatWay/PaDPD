@@ -34,6 +34,8 @@ public class Server {
                         Directives.parameter("packageID", id -> {
                             Future<Object> future =
                                     Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
+                            StoredMessage res;
+                            
                         })))))
     }
 }
