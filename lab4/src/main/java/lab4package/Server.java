@@ -10,7 +10,7 @@ import akka.pattern.Patterns;
 import akka.util.Timeout;
 
 import java.time.Duration;
-import java.util.concurrent.Future;
+import scala.concurrent.Future;
 
 public class Server {
     static final Timeout FUTURE_TIMEOUT = Timeout.create(Duration.ofSeconds(5));
