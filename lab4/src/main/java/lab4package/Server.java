@@ -36,7 +36,11 @@ public class Server {
                         Directives.parameter("packageID", id -> {
                             Future<Object> future =
                                     Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
-                            StoredMessage res = Await.result(future, FUTURE_TIMEOUT, )
+                            try {
+                                StoredMessage res = (StoredMessage) Await.result(future, FUTURE_TIMEOUT.duration());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         })))))
     }
 }
