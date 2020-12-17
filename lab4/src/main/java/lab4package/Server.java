@@ -2,6 +2,7 @@ package lab4package;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Directives;
@@ -20,9 +21,9 @@ public class Server {
     ActorSystem actorSystem;
     ActorRef actorRef;
 
-    public Server(ActorSystem actorSystem, ActorRef actorRef) {
+    public Server(ActorSystem actorSystem) {
         this.actorSystem = actorSystem;
-        this.actorRef = actorRef;
+        this.actorRef = actorSystem.actorOf(Props.create());
     }
 
     public Route getRoute() {
