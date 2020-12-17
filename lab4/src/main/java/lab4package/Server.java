@@ -33,7 +33,7 @@ public class Server {
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
                         Directives.parameter("packageID", id -> {
                             Future<Object> future =
-                                    Patterns.ask(actorRef, new RetrievedMessage(id),)
+                                    Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
                         })))))
     }
 }
