@@ -20,7 +20,7 @@ public class Server {
                 Directives.route(Directives.post(() ->
                         Directives.entity(Jackson.unmarshaller(RetrieveResults.class), body -> {
                             actorRef.tell(new ExecuteMessage(body.id, body.functionName, body.jsScript, body.tests)
-                            )
+                            ), ActorRef.noSender())
                         })))))
     }
 }
