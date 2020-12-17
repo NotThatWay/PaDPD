@@ -43,7 +43,7 @@ public class Server {
                             }
 
                             if (res != null && res.result != null) {
-                                return Directives.complete(StatusCodes.OK, res.result)
+                                return Directives.complete(StatusCodes.OK, res.result.)
                             }
                         })))))
     }
