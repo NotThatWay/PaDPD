@@ -23,7 +23,7 @@ public class Server {
 
     public Server(ActorSystem actorSystem) {
         this.actorSystem = actorSystem;
-        this.actorRef = actorSystem.actorOf(Props.create());
+        this.actorRef = actorSystem.actorOf(Props.create(RouteActor.class));
     }
 
     public Route getRoute() {
