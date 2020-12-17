@@ -14,7 +14,8 @@ public class Main {
         Http http = Http.get(actorSystem);
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
         Server server = new Server(actorSystem);
-        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow
+        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.getRoute().flow(actorSystem, actorMaterializer);
+        
 
     }
 }
