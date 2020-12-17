@@ -13,7 +13,8 @@ import akka.stream.javadsl.Flow;
 import java.util.concurrent.CompletionStage;
 
 public class Main {
-    static final String IP = 
+    static final String IP = "localhost";
+    static final int PORT = 6111;
 
     public static void main(String[] args) {
         ActorSystem actorSystem = ActorSystem.create("lab4");
