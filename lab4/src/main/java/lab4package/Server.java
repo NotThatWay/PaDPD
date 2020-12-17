@@ -34,15 +34,17 @@ public class Server {
                         })))),
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
                         Directives.parameter("packageID", id -> {
-                            Future<Object> future =
-                                    Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
+                            Future<Object> future = Patterns.ask(actorRef, new RetrievedMessage(id), FUTURE_TIMEOUT);
+                            StoredMessage res;
                             try {
-                                StoredMessage res = (StoredMessage) Await.result(future, FUTURE_TIMEOUT.duration());
+                                res = (StoredMessage) Await.result(future, FUTURE_TIMEOUT.duration());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
-                            if (res !=)
+                            if (res != null && res.result != null) {
+                                return Directives.complete(StatusCodes.OK, res.result)
+                            }
                         })))))
     }
 }
