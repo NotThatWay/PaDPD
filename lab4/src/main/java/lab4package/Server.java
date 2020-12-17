@@ -11,6 +11,8 @@ import akka.pattern.Patterns;
 import java.util.concurrent.Future;
 
 public class Server {
+    static final FUTURE_TIMEOUT
+
     ActorSystem actorSystem;
     ActorRef actorRef;
 
@@ -29,7 +31,7 @@ public class Server {
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
                         Directives.parameter("packageID", id -> {
                             Future<Object> future =
-                                    Patterns.ask(actorRef, new RetrievedMessage(id))
+                                    Patterns.ask(actorRef, new RetrievedMessage(id),)
                         })))))
     }
 }
