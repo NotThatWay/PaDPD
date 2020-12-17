@@ -6,8 +6,10 @@ public class RetrieveResults {
     public String jsScript;
     public Test[] tests;
 
-    public RetrieveResults(String id, String functionName) {
+    public RetrieveResults(String id, String functionName, String jsScript, Test[] tests) {
         this.id = id;
         this.functionName = functionName;
+        this.jsScript = jsScript;
+        this.tests = tests;
     }
 }
