@@ -10,6 +10,11 @@ public class Result {
         results = new HashMap<String,Boolean>();
     }
 
-
+    public String toJSON() {
+        StringBuilder res = new StringBuilder("(");
+        for (Map.Entry<String, Boolean> result : results.entrySet()) {
+            res.append(String.format(""))
+        }
+    }
 
 }
