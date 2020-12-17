@@ -6,6 +6,9 @@ import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.Directives;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
+
+import java.util.concurrent.Future;
 
 public class Server {
     ActorSystem actorSystem;
@@ -24,6 +27,9 @@ public class Server {
                             return Directives.complete(StatusCodes.OK, String.format("Package %s started\n", body.id));
                         })))),
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
-                        Directives.parameter(("packageID", id ->))))))
+                        Directives.parameter("packageID", id -> {
+                            Future<Object> future =
+                                    Patterns.ask(actorRef, new RetrievedMessage(id))
+                        })))))
     }
 }
