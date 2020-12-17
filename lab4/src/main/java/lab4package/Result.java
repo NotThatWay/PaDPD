@@ -15,6 +15,7 @@ public class Result {
         for (Map.Entry<String, Boolean> result : results.entrySet()) {
             res.append(String.format("\"%s\" - \"%s\"", result.getKey(), result.getValue() ? "true" : "false"));
         }
+        return res;
     }
 
 }
