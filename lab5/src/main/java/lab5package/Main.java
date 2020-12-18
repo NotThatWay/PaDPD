@@ -64,7 +64,7 @@ public class Main {
                         })
                         .mapAsync(pair.getValue(), url -> {
                             long startTime = System.currentTimeMillis();
-                            G
+                            Dsl.asyncHttpClient()
                         })
 
             })
