@@ -54,7 +54,7 @@ public class Main {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
             return cs.thenCompose(res -> {
                 if ((Integer)res >= 0) {
-                    return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.))
+                    return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.getKey(), ))
                 }
 
             })
