@@ -60,8 +60,9 @@ public class Main {
                 }
                 Flow<Pair<String,Integer>,Integer,NotUsed> flow = Flow.<Pair<String,Integer>>create()
                         .mapConcat(pair -> {
-                            return new ArrayList<>(Collections.nCopies(pair.getValue(), ))
+                            return new ArrayList<>(Collections.nCopies(pair.getValue(), pair.getKey()));
                         })
+                        .mapAsync(pair.getValue(), url ->)
 
             })
         }
