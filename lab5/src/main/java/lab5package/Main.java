@@ -21,6 +21,7 @@ import org.asynchttpclient.*;
 public class Main {
     final static AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
     final static String URL = "...";
+    final static String COUNT = "...";
 
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
