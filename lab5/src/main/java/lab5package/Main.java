@@ -56,7 +56,10 @@ public class Main {
                 if ((Integer)res >= 0) {
                     return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.getKey(), (Integer)res));
                 }
-                Flow<Pair<String,Integer>,Integer,NotUsed> flow = 
+                Flow<Pair<String,Integer>,Integer,NotUsed> flow = Flow.<Pair<String,Integer>>create()
+                        .mapConcat(pair -> {
+                            return new 
+                        })
 
             })
         }
