@@ -12,6 +12,7 @@ import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
+import org.asynchttpclient.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -30,6 +31,7 @@ public class Main {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
+
 
     }
 }
