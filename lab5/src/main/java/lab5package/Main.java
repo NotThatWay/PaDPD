@@ -72,7 +72,11 @@ public class Main {
                             long endTime = System.currentTimeMillis();
                             return CompletableFuture.completedFuture(endTime - startTime);
                         });
-                return Source.single(pair).via(flow).toMat(Sink.fold(0, Long::sum), Keep.right()).run(materializer)
+                return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run(materializer)
+                        .thenApply(sum -> {
+                            return new Pair<String,Integer>(pair.getKey(), )
+                        })
+
 
             })
         }
