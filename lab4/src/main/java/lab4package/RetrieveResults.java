@@ -1,8 +1,8 @@
 package lab4package;
 
 public class RetrieveResults {
-    public void setId(String id) {
-        this.id = id;
+    public void setPackageId(String id) {
+        this.packageID = id;
     }
 
     public void setFunctionName(String functionName) {
@@ -17,10 +17,10 @@ public class RetrieveResults {
         this.tests = tests;
     }
 
-    private String id;
+    private String packageID;
 
-    public String getId() {
-        return id;
+    public String getPackageID() {
+        return packageID;
     }
 
     public String getFunctionName() {
@@ -40,7 +40,7 @@ public class RetrieveResults {
     private Test[] tests;
 
     public RetrieveResults(String id, String functionName, String jsScript, Test[] tests) {
-        this.id = id;
+        this.packageID = id;
         this.functionName = functionName;
         this.jsScript = jsScript;
         this.tests = tests;
