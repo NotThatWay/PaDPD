@@ -64,8 +64,10 @@ public class Main {
                         })
                         .mapAsync(pair.getValue(), url -> {
                             long startTime = System.currentTimeMillis();
-                            Dsl.asyncHttpClient()
-                        })
+                            Dsl.asyncHttpClient().prepareGet(url).execute();
+                            long endTime = System.currentTimeMillis();
+                            return CompletableFuture.completedFuture(endTime - startTime);
+                        });
 
             })
         }
