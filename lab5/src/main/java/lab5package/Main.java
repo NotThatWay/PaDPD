@@ -71,7 +71,7 @@ public class Main {
                             long endTime = System.currentTimeMillis();
                             return CompletableFuture.completedFuture(endTime - startTime);
                         });
-                return Source.single(pair).via(flow).toMat(Sink.fold())
+                return Source.single(pair).via(flow).toMat(Sink.fold(0, Long::sum), )
 
             })
         }
