@@ -1,7 +1,9 @@
 package lab5package;
 
 import akka.NotUsed;
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
@@ -34,5 +36,6 @@ public class Main {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
         asyncHttpClient.close();
+        ActorRef cache = system.actorOf(Props.create(CacheActor.class));
     }
 }
