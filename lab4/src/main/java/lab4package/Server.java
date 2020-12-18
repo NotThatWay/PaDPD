@@ -30,7 +30,7 @@ public class Server {
         return Directives.route(Directives.path("execute", () ->
                 Directives.route(Directives.post(() ->
                         Directives.entity(Jackson.unmarshaller(RetrieveResults.class), body -> {
-                            actorRef.tell(new ExecuteMessage(body.getPackageID(), body.getFunctionName(), body.getJsScript(), body.getTests()), ActorRef.noSender());
+                            actorRef.tell(new ExecuteMessage(body.getPackageID(), body.getJsScript(), body.getFunctionName(), body.getTests()), ActorRef.noSender());
                             return Directives.complete(StatusCodes.OK, String.format("Package %s started\n", body.getPackageID()));
                         })))),
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
