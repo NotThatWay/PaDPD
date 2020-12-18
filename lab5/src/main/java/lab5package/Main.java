@@ -14,6 +14,7 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 import java.time.Duration;
@@ -52,7 +53,9 @@ public class Main {
         }).mapAsync(1, (Pair<String, Integer> pair) -> {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
             return cs.thenCompose(res -> {
-                if res >= 0
+                if ((Integer)res >= 0) {
+                    return CompletableFuture.completedFuture(new Pair<String,Integer>)
+                }
 
             })
         }
