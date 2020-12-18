@@ -62,7 +62,9 @@ public class Main {
                         .mapConcat(pair -> {
                             return new ArrayList<>(Collections.nCopies(pair.getValue(), pair.getKey()));
                         })
-                        .mapAsync(pair.getValue(), url ->)
+                        .mapAsync(pair.getValue(), url -> {
+                            
+                        })
 
             })
         }
