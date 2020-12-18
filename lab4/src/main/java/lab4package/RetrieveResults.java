@@ -39,7 +39,7 @@ public class RetrieveResults {
     private String jsScript;
     private Test[] tests;
 
-    public RetrieveResults(String id, String functionName, String jsScript, Test[] tests) {
+    public RetrieveResults(String id, String jsScript, String functionName, Test[] tests) {
         this.packageID = id;
         this.functionName = functionName;
         this.jsScript = jsScript;
