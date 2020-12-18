@@ -2,6 +2,23 @@ package lab4package;
 
 public class RetrieveResults {
     public String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public String getJsScript() {
+        return jsScript;
+    }
+
+    public Test[] getTests() {
+        return tests;
+    }
+
     public String functionName;
     public String jsScript;
     public Test[] tests;
