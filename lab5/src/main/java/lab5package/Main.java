@@ -9,6 +9,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
@@ -46,8 +47,8 @@ public class Main {
     public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
         Pair<String, Integer> pair;
         return Flow.of(HttpRequest.class).map(x -> {return new Pair<String, Integer>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
-        }).mapAsync(1, pair) -> {
-            CompletionStage<Object>
+        }).mapAsync(1, pair -> {
+            CompletionStage<Object> cs = Patterns.ask(cache, )
         }
     }
 }
