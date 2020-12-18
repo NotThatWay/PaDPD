@@ -14,10 +14,13 @@ import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
+
+import javafx.util.Pair;
 import org.asynchttpclient.*;
 
 public class Main {
     final static AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
+    final static String URL = "...";
 
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
@@ -40,6 +43,7 @@ public class Main {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
-        return Flow.of(HttpRequest.class).map()
+        return Flow.of(HttpRequest.class).map(x -> {return new Pair<String, Integer>(x.getUri().query().get().get())
+        })
     }
 }
