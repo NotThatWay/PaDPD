@@ -10,7 +10,7 @@ public class CacheActor extends AbstractActor {
 
     public Receive createReceive() {
         return ReceiveBuilder.create().match(ReceiveMessage.class, message -> {
-            getSender().tell()
+            getSender().tell(cache.getOrDefault(message.url, -1)),
         });
     }
 }
