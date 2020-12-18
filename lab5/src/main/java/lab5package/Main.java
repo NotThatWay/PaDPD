@@ -59,8 +59,8 @@ public class Main {
                     return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.getKey(), (Integer)res));
                 }
                 Flow<Pair<String,Integer>,Integer,NotUsed> flow = Flow.<Pair<String,Integer>>create()
-                        .mapConcat(pair -> {
-                            return new ArrayList<>(Collections.nCopies(pair.getValue(), pair.getKey()));
+                        .mapConcat(pair2 -> {
+                            return new ArrayList<>(Collections.nCopies(pair2.getValue(), pair2.getKey()));
                         })
                         .mapAsync(pair.getValue(), url -> {
                             long startTime = System.currentTimeMillis();
