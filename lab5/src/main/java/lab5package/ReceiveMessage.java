@@ -1,2 +1,4 @@
-package lab5package;public class ReceiveMessage {
+package lab5package;
+
+public class ReceiveMessage {
 }
