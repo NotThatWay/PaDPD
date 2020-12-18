@@ -15,7 +15,7 @@ import java.util.concurrent.CompletionStage;
 import org.asynchttpclient.*;
 
 public class Main {
-    final static AsyncHttpClient asyncHttpClient = 
+    final static AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
 
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
@@ -33,7 +33,7 @@ public class Main {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
-
+        
 
     }
 }
