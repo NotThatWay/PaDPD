@@ -16,7 +16,7 @@ import akka.stream.javadsl.Flow;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
-import javafx.util.Duration;
+import java.time.Duration;
 import javafx.util.Pair;
 import org.asynchttpclient.*;
 
@@ -25,7 +25,7 @@ public class Main {
     final static String URL = "...";
     final static String COUNT = "...";
     static ActorRef cache;
-    static final Duration timeout = Duration.ofSeconds()
+    static final Duration timeout = Duration.ofSeconds(5);
 
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
