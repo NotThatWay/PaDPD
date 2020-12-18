@@ -15,6 +15,8 @@ import java.util.concurrent.CompletionStage;
 import org.asynchttpclient.*;
 
 public class Main {
+    final static AsyncHttpClient asyncHttpClient = 
+
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
         ActorSystem system = ActorSystem.create("routes");
@@ -31,7 +33,7 @@ public class Main {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
-        
+
 
     }
 }
