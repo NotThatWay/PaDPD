@@ -40,6 +40,6 @@ public class Main {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
-        return Flow.of(HttpRequest.class).
+        return Flow.of(HttpRequest.class).map()
     }
 }
