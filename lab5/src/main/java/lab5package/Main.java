@@ -14,6 +14,8 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -58,7 +60,7 @@ public class Main {
                 }
                 Flow<Pair<String,Integer>,Integer,NotUsed> flow = Flow.<Pair<String,Integer>>create()
                         .mapConcat(pair -> {
-                            return new 
+                            return new ArrayList<>(Collections.nCopies())
                         })
 
             })
