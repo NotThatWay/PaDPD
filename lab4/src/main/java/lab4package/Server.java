@@ -31,7 +31,7 @@ public class Server {
                 Directives.route(Directives.post(() ->
                         Directives.entity(Jackson.unmarshaller(RetrieveResults.class), body -> {
                             actorRef.tell(new ExecuteMessage(body.getId(), body.getFunctionName(), body.getJsScript(), body.getTests()), ActorRef.noSender());
-                            return Directives.complete(StatusCodes.OK, String.format("Package %s started\n", body.id));
+                            return Directives.complete(StatusCodes.OK, String.format("Package %s started\n", body.getId()));
                         })))),
                 Directives.path("retrieve", () -> Directives.route(Directives.get(() ->
                         Directives.parameter("packageID", id -> {
