@@ -20,6 +20,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 import java.time.Duration;
+
+import akka.stream.javadsl.Sink;
+import akka.stream.javadsl.Source;
 import javafx.util.Pair;
 import org.asynchttpclient.*;
 
@@ -51,14 +54,14 @@ public class Main {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
-        return Flow.of(HttpRequest.class).map(x -> {return new Pair<String, Integer>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
+        return Flow.of(HttpRequest.class).map(x -> {return new Pair<>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
         }).mapAsync(1, (Pair<String, Integer> pair) -> {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
             return cs.thenCompose(res -> {
                 if ((Integer)res >= 0) {
                     return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.getKey(), (Integer)res));
                 }
-                Flow<Pair<String,Integer>,Integer,NotUsed> flow = Flow.<Pair<String,Integer>>create()
+                Flow<Pair<String,Integer>,Long,NotUsed> flow = Flow.<Pair<String,Integer>>create()
                         .mapConcat(pair2 -> {
                             return new ArrayList<>(Collections.nCopies(pair2.getValue(), pair2.getKey()));
                         })
@@ -68,6 +71,7 @@ public class Main {
                             long endTime = System.currentTimeMillis();
                             return CompletableFuture.completedFuture(endTime - startTime);
                         });
+                return Source.single(pair).via(flow).toMat(Sink.fold())
 
             })
         }
