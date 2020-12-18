@@ -23,6 +23,7 @@ public class Main {
     final static AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
     final static String URL = "...";
     final static String COUNT = "...";
+    static ActorRef cache;
 
     public static void main(String[] args) throws IOException {
         System.out.println("start!");
@@ -41,7 +42,7 @@ public class Main {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
         asyncHttpClient.close();
-        ActorRef cache = system.actorOf(Props.create(CacheActor.class));
+        cache = system.actorOf(Props.create(CacheActor.class));
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
