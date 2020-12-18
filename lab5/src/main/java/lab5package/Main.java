@@ -63,7 +63,8 @@ public class Main {
                             return new ArrayList<>(Collections.nCopies(pair.getValue(), pair.getKey()));
                         })
                         .mapAsync(pair.getValue(), url -> {
-                            
+                            long startTime = System.currentTimeMillis();
+                            G
                         })
 
             })
