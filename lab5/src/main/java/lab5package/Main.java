@@ -51,8 +51,9 @@ public class Main {
         return Flow.of(HttpRequest.class).map(x -> {return new Pair<String, Integer>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
         }).mapAsync(1, (Pair<String, Integer> pair) -> {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
-            return cs.thenCompose((Object res) -> {
-                
+            return cs.thenCompose(res -> {
+                if res >= 0
+
             })
         }
     }
