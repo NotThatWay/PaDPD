@@ -17,7 +17,7 @@ public class RetrieveResults {
         this.tests = tests;
     }
 
-    public String id;
+    private String id;
 
     public String getId() {
         return id;
@@ -35,9 +35,9 @@ public class RetrieveResults {
         return tests;
     }
 
-    public String functionName;
-    public String jsScript;
-    public Test[] tests;
+    private String functionName;
+    private String jsScript;
+    private Test[] tests;
 
     public RetrieveResults(String id, String functionName, String jsScript, Test[] tests) {
         this.id = id;

@@ -1,9 +1,9 @@
 package lab4package;
 
 public class Test {
-    public String testName;
-    public String expectedResult;
-    public Object[] params;
+    private String testName;
+    private String expectedResult;
+    private Object[] params;
 
     public Test(String testName, String expectedResult, Object[] params) {
         this.testName = testName;
