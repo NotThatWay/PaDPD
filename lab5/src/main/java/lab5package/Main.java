@@ -74,11 +74,9 @@ public class Main {
                         });
                 return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run(materializer)
                         .thenApply(sum -> {
-                            return new Pair<String,Integer>(pair.getKey(), )
-                        })
-
-
-            })
+                            return new Pair<String,Long>(pair.getKey(), sum/pair.getValue());
+                        });
+            });
         }
     }
 }
