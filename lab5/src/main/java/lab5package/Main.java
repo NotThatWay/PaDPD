@@ -55,27 +55,22 @@ public class Main {
     }
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
-        return Flow.of(HttpRequest.class).map(x -> {return new Pair<>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
-        }).mapAsync(1, (Pair<String, Integer> pair) -> {
+        return Flow.of(HttpRequest.class).map(x -> new Pair<>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()))).mapAsync(1, (Pair<String, Integer> pair) -> {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
             return cs.thenCompose(res -> {
                 if ((Integer)res >= 0) {
-                    return CompletableFuture.completedFuture(new Pair<String,Long>(pair.getKey(), (long)res));
+                    return CompletableFuture.completedFuture(new Pair<>(pair.getKey(), (long) res));
                 }
                 Flow<Pair<String,Integer>,Long,NotUsed> flow = Flow.<Pair<String,Integer>>create()
-                        .mapConcat(pair2 -> {
-                            return new ArrayList<>(Collections.nCopies(pair2.getValue(), pair2.getKey()));
-                        })
+                        .mapConcat(pair2 -> new ArrayList<>(Collections.nCopies(pair2.getValue(), pair2.getKey())))
                         .mapAsync(pair.getValue(), url -> {
                             long startTime = System.currentTimeMillis();
                             Dsl.asyncHttpClient().prepareGet(url).execute();
                             long endTime = System.currentTimeMillis();
                             return CompletableFuture.completedFuture(endTime - startTime);
                         });
-                return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run()
-                        .thenApply(sum -> {
-                            return new Pair<String,Long>(pair.getKey(), sum/pair.getValue());
-                        });
+                return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run(materializer)
+                        .thenApply(sum -> new Pair<>(pair.getKey(), sum / pair.getValue()));
             });
         }).map((Pair<String,Long> pair) -> {
             cache.tell(new StoredMessage(pair.getKey(), pair.getValue()), ActorRef.noSender());
