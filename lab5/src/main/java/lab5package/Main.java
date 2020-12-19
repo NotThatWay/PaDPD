@@ -79,7 +79,7 @@ public class Main {
             });
         }).map((Pair<String,Long> pair) -> {
             cache.tell(new StoredMessage(pair.getKey(), pair.getValue()), ActorRef.noSender());
-            return HttpResponse.create().withEntity(String.valueOf(pair.getValue()));
+            return HttpResponse.create().withEntity(pair.getValue().toString());
         });
     }
 }
