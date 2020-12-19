@@ -39,7 +39,7 @@ public class Main {
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = ...;
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -54,7 +54,7 @@ public class Main {
         cache = system.actorOf(Props.create(CacheActor.class));
     }
 
-    public Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
+    public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
         return Flow.of(HttpRequest.class).map(x -> {return new Pair<>(x.getUri().query().get(URL).get(), Integer.parseInt(x.getUri().query().get(COUNT).get()));
         }).mapAsync(1, (Pair<String, Integer> pair) -> {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
