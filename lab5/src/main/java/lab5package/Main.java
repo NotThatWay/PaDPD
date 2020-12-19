@@ -77,6 +77,6 @@ public class Main {
                             return new Pair<String,Long>(pair.getKey(), sum/pair.getValue());
                         });
             });
-        }
+        })
     }
 }
