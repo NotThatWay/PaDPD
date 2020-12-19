@@ -60,7 +60,7 @@ public class Main {
             CompletionStage<Object> cs = Patterns.ask(cache, new ReceiveMessage(pair.getKey()), timeout);
             return cs.thenCompose(res -> {
                 if ((Integer)res >= 0) {
-                    return CompletableFuture.completedFuture(new Pair<String,Integer>(pair.getKey(), (long)res));
+                    return CompletableFuture.completedFuture(new Pair<String,Long>(pair.getKey(), (long)res));
                 }
                 Flow<Pair<String,Integer>,Long,NotUsed> flow = Flow.<Pair<String,Integer>>create()
                         .mapConcat(pair2 -> {
@@ -72,7 +72,7 @@ public class Main {
                             long endTime = System.currentTimeMillis();
                             return CompletableFuture.completedFuture(endTime - startTime);
                         });
-                return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run(materializer)
+                return Source.single(pair).via(flow).toMat(Sink.fold((long)0.0, Long::sum), Keep.right()).run()
                         .thenApply(sum -> {
                             return new Pair<String,Long>(pair.getKey(), sum/pair.getValue());
                         });
