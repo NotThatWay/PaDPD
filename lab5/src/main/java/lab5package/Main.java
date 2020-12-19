@@ -77,7 +77,7 @@ public class Main {
                             return new Pair<String,Long>(pair.getKey(), sum/pair.getValue());
                         });
             });
-        }).map(pair -> {
+        }).map((Pair<String,Long> pair) -> {
             cache.tell(new StoredMessage(pair.getKey(), pair.getValue()), ActorRef.noSender());
             return HttpResponse.create().withEntity(String.valueOf(pair.getValue()));
         });
