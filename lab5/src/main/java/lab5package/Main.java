@@ -80,6 +80,6 @@ public class Main {
         }).map(pair -> {
             cache.tell(new StoredMessage(pair.getKey(), pair.getValue()), ActorRef.noSender());
             return HttpResponse.create().withEntity(String.valueOf(pair.getValue()));
-        })
+        });
     }
 }
