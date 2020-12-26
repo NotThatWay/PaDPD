@@ -22,6 +22,7 @@ import java.util.concurrent.CompletionStage;
 public class Main {
     public static ZooKeeper zooKeeper;
     public static final Duration timeout = Duration.ofSeconds(3);
+    public static ActorRef actorRef;
 
 
     public static Watcher watcher = watchedEvent -> {
@@ -29,11 +30,11 @@ public class Main {
             ArrayList<String> servers = new ArrayList<>();
             try {
                 for (String s: zooKeeper.getChildren("/servers", null)) {
-                    byte[] port = zooKeeper.getData("/servers/" + s, false, null)
+                     String port = new String(zooKeeper.getData("/servers/" + s, false, null));
+                     servers.add(port);
                 }
-            } catch (KeeperException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+                actorRef.tell(new )
+            } catch (KeeperException | InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -42,7 +43,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
         Http http = Http.get(actorSystem);
-        ActorRef actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
+        actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(...);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
