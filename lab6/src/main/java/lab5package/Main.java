@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class Main {
+    public static ZooKeeper zooKeeper;
+
     public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
         Http http = Http.get(actorSystem);
@@ -33,5 +35,11 @@ public class Main {
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> actorSystem.terminate());
+        initZooKeeper();
+    }
+
+    public static void initZooKeeper() {
+        zooKeeper = new ZooKeeper("localhost:8080")
     }
 }
+
