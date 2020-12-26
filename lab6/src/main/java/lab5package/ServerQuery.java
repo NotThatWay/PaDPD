@@ -1,2 +1,5 @@
-package lab5package;public class ServerQuery {
+package lab5package;
+
+public class ServerQuery {
+    
 }
