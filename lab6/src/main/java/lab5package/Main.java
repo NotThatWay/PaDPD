@@ -84,7 +84,7 @@ public class Main {
                                         String.format("http://%s:%s?%s=%s&%s=%d", "localhost", next, URL, url, COUNT, Integer.parseInt(count) - 1)
                                         ))));
                             }
-                                }))))
+                        }))));
     }
 }
 
