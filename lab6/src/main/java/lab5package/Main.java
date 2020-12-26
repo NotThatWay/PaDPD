@@ -25,6 +25,8 @@ public class Main {
     public static ZooKeeper zooKeeper;
     public static final Duration timeout = Duration.ofSeconds(3);
     public static ActorRef actorRef;
+    public static final String URL = "url";
+    public static final String COUNT = "count";
 
     public static Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
