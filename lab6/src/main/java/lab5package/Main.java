@@ -15,10 +15,12 @@ import org.apache.zookeeper.*;
 import akka.http.javadsl.server.Directives;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class Main {
     public static ZooKeeper zooKeeper;
+    public static final Duration timeout = Duration.ofSeconds(5) * 1000;
 
     public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
@@ -39,7 +41,7 @@ public class Main {
     }
 
     public static void initZooKeeper() {
-        zooKeeper = new ZooKeeper("localhost:8080")
+        zooKeeper = new ZooKeeper("localhost:8080", timeout,)
     }
 }
 
