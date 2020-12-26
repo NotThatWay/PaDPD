@@ -38,7 +38,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-    }
+    };
 
     public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
@@ -60,8 +60,8 @@ public class Main {
 
 
 
-    public static void initZooKeeper() {
-        zooKeeper = new ZooKeeper("localhost:8080", 1000 * timeout.getSeconds(), watcher)
+    public static void initZooKeeper() throws IOException {
+        zooKeeper = new ZooKeeper("localhost:8080", (int) (1000 * timeout.getSeconds()), watcher)
     }
 }
 
