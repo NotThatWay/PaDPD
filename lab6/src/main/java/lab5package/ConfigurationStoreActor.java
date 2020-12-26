@@ -4,14 +4,18 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ConfigurationStoreActor extends AbstractActor {
     ArrayList<String> servers = new ArrayList<String>();
+    Random random = new Random();
 
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(ServersList.class, message -> {
-                servers = message.servers; }).match(ServerQuery.class, message)
+                servers = message.servers; }).match(ServerQuery.class, message -> {
+                    getSender().tell(servers.get(random.nextInt(servers.size())))
+        })
 
     }
 }
