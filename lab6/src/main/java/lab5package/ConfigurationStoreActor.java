@@ -11,7 +11,7 @@ public class ConfigurationStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create().match(ServersList.class, message -> {
-                servers = message.servers; }).match()
+                servers = message.servers; }).match(ServerQuery.class, message)
 
     }
 }
