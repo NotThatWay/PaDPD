@@ -21,7 +21,7 @@ import java.util.concurrent.CompletionStage;
 
 public class Main {
     public static ZooKeeper zooKeeper;
-    public static final Duration timeout = Duration.ofSeconds(5);
+    public static final Duration timeout = Duration.ofSeconds(3);
 
 
     public static Watcher watcher = watchedEvent -> {
@@ -52,7 +52,7 @@ public class Main {
 
 
     public static void initZooKeeper() {
-        zooKeeper = new ZooKeeper("localhost:8080", timeout.getSeconds(), watcher)
+        zooKeeper = new ZooKeeper("localhost:8080", 1000 * timeout.getSeconds(), watcher)
     }
 }
 
