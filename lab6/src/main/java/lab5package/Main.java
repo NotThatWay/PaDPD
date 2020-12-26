@@ -81,8 +81,8 @@ public class Main {
                             else {
                                 return Directives.completeWithFuture(Patterns.ask(actorRef, new ServerQuery(), timeout)
                                 .thenApply(next -> next).thenCompose(next -> http.singleRequest(HttpRequest.create(
-                                        String.format("http://%", "localhost", next, )
-                                        ))))
+                                        String.format("http://%s:%s?%s=%s&%s=%d", "localhost", next, URL, url, COUNT, Integer.parseInt(count) - 1)
+                                        ))));
                             }
                                 }))))
     }
