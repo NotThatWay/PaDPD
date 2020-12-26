@@ -9,6 +9,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.*;
@@ -64,6 +65,11 @@ public class Main {
         zooKeeper = new ZooKeeper("localhost:8080", (int) (1000 * timeout.getSeconds()), watcher);
         zooKeeper.create("/servers8080", "8080".getBytes(StandardCharsets.UTF_8), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
         watcher.process(new WatchedEvent(Watcher.Event.EventType.NodeCreated, Watcher.Event.KeeperState.SyncConnected, ""));
+    }
+
+    public static Route createFlow() {
+        return Directives.route(Directives.get(() ->
+                Directives.parameter()))
     }
 }
 
