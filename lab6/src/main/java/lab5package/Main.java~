@@ -27,7 +27,7 @@ public class Main {
     public static Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             ArrayList<String> servers = new ArrayList<>();
-            for (String s: zooKeeper.getChildren(""))
+
         }
     }
 
