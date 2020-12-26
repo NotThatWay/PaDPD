@@ -27,7 +27,15 @@ public class Main {
     public static Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             ArrayList<String> servers = new ArrayList<>();
-            for (String s: zooKeeper.getChildren(""))
+            try {
+                for (String s: zooKeeper.getChildren("/servers", null)) {
+                    byte[] port = zooKeeper.getData("/servers/" + s, false, )
+                }
+            } catch (KeeperException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
