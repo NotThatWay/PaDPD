@@ -10,6 +10,7 @@ import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.*;
@@ -75,7 +76,10 @@ public class Main {
                 Directives.parameter(URL, url ->
                         Directives.parameter(COUNT, count -> {
                             if (Integer.parseInt(count) <= 0) {
-                                return Directives.completeWithFuture(http.singleRequest(HttpRequest.create(url)))
+                                return Directives.completeWithFuture(http.singleRequest(HttpRequest.create(url)));
+                            }
+                            else {
+                                return Directives.completeWithFuture(Patterns.ask(actorRef, new ServerQuery()))
                             }
                                 }))))
     }
