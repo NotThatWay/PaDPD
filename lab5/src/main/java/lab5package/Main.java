@@ -29,8 +29,8 @@ import org.asynchttpclient.*;
 
 public class Main {
     final static AsyncHttpClient asyncHttpClient = Dsl.asyncHttpClient();
-    final static String URL = "...";
-    final static String COUNT = "...";
+    final static String URL = "testUrl";
+    final static String COUNT = "count";
     static ActorRef cache;
     static final Duration timeout = Duration.ofSeconds(5);
 
