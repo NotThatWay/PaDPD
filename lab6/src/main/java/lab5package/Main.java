@@ -15,6 +15,7 @@ import org.apache.zookeeper.*;
 import akka.http.javadsl.server.Directives;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.concurrent.CompletionStage;
@@ -24,14 +25,13 @@ public class Main {
     public static final Duration timeout = Duration.ofSeconds(3);
     public static ActorRef actorRef;
 
-
     public static Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             ArrayList<String> servers = new ArrayList<>();
             try {
                 for (String s: zooKeeper.getChildren("/servers", null)) {
-                     String port = new String(zooKeeper.getData("/servers/" + s, false, null));
-                     servers.add(port);
+                    String port = new String(zooKeeper.getData("/servers/" + s, false, null));
+                    servers.add(port);
                 }
                 actorRef.tell(new ServersList(servers), ActorRef.noSender());
             } catch (KeeperException | InterruptedException e) {
@@ -60,8 +60,10 @@ public class Main {
 
 
 
-    public static void initZooKeeper() throws IOException {
-        zooKeeper = new ZooKeeper("localhost:8080", (int) (1000 * timeout.getSeconds()), watcher)
+    public static void initZooKeeper() throws IOException, KeeperException, InterruptedException {
+        zooKeeper = new ZooKeeper("localhost:8080", (int) (1000 * timeout.getSeconds()), watcher);
+        zooKeeper.create("/servers8080", "8080".getBytes(StandardCharsets.UTF_8), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        watcher.process(new WatchedEvent(Watcher.Event.EventType.NodeCreated, Watcher.Event.KeeperState.SyncConnected, ""));
     }
 }
 
