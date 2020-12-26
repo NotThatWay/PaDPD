@@ -31,6 +31,7 @@ public class Main {
         );
         System.in.read();
         binding
-                .thenCompose()
+                .thenCompose(ServerBinding::unbind)
+                .thenAccept(unbound -> actorSystem.terminate());
     }
 }
