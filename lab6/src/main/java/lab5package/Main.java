@@ -71,7 +71,12 @@ public class Main {
 
     public static Route createFlow() {
         return Directives.route(Directives.get(() ->
-                Directives.parameter()))
+                Directives.parameter(URL, url ->
+                        Directives.parameter(COUNT, count -> {
+                            if (count <= 0) {
+                                
+                            }
+                                }))))
     }
 }
 
