@@ -31,7 +31,7 @@ public class Main {
     public static Http http;
 
     public static Watcher watcher = watchedEvent -> {
-        if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
+        if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated || watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted || watchedEvent.getType() == Watcher.Event.EventType.NodeDataChanged) {
             ArrayList<String> servers = new ArrayList<>();
             try {
                 for (String s: zooKeeper.getChildren("/servers", null)) {
