@@ -29,7 +29,7 @@ public class Main {
             ArrayList<String> servers = new ArrayList<>();
             try {
                 for (String s: zooKeeper.getChildren("/servers", null)) {
-                    byte[] port = zooKeeper.getData("/servers/" + s, false, )
+                    byte[] port = zooKeeper.getData("/servers/" + s, false, null)
                 }
             } catch (KeeperException e) {
                 e.printStackTrace();
