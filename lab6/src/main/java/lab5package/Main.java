@@ -33,7 +33,7 @@ public class Main {
                      String port = new String(zooKeeper.getData("/servers/" + s, false, null));
                      servers.add(port);
                 }
-                actorRef.tell(new ServersList(servers))
+                actorRef.tell(new ServersList(servers), ActorRef.noSender());
             } catch (KeeperException | InterruptedException e) {
                 e.printStackTrace();
             }
