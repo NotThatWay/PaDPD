@@ -80,7 +80,9 @@ public class Main {
                             }
                             else {
                                 return Directives.completeWithFuture(Patterns.ask(actorRef, new ServerQuery(), timeout)
-                                .thenApply())
+                                .thenApply(next -> next).thenCompose(next -> http.singleRequest(HttpRequest.create(
+                                        String.format()
+                                        ))))
                             }
                                 }))))
     }
