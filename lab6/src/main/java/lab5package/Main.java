@@ -27,6 +27,7 @@ public class Main {
     public static ActorRef actorRef;
     public static final String URL = "url";
     public static final String COUNT = "count";
+    public static Http http;
 
     public static Watcher watcher = watchedEvent -> {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
@@ -45,7 +46,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
-        Http http = Http.get(actorSystem);
+        http = Http.get(actorSystem);
         actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(...);
@@ -73,8 +74,8 @@ public class Main {
         return Directives.route(Directives.get(() ->
                 Directives.parameter(URL, url ->
                         Directives.parameter(COUNT, count -> {
-                            if (count <= 0) {
-                                
+                            if (Integer.parseInt(count) <= 0) {
+                                return Directives.completeWithFuture(http.singleRequest(HttpRequest.create(url)))
                             }
                                 }))))
     }
