@@ -10,5 +10,5 @@ public class Main {
         ActorSystem actorSystem = ActorSystem.create("routes");
         Http http = Http.get(actorSystem);
         ActorRef actorRef = actorSystem.actorOf(Props.create(...));
-    } 
+    }
 }
