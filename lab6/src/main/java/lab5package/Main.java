@@ -5,6 +5,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
@@ -21,6 +22,6 @@ public class Main {
         ActorRef actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(...);
-        final CompletionStage<>
+        final CompletionStage<ServerBinding> binding = 
     }
 }
