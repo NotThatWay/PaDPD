@@ -18,6 +18,6 @@ public class Main {
         Http http = Http.get(actorSystem);
         ActorRef actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
-        Flow<HttpRequest, HttpResponse, NotUsed> route = createFlow()
+        Flow<HttpRequest, HttpResponse, NotUsed> route = createFlow(...);
     }
 }
