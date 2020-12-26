@@ -14,10 +14,11 @@ import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.*;
 import akka.http.javadsl.server.Directives;
 
+import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ActorSystem actorSystem = ActorSystem.create("routes");
         Http http = Http.get(actorSystem);
         ActorRef actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
@@ -28,5 +29,8 @@ public class Main {
                 ConnectHttp.toHost("localhost", 8080),
                 actorMaterializer
         );
+        System.in.read();
+        binding
+                .thenCompose()
     }
 }
