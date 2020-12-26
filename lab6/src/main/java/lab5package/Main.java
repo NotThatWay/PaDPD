@@ -79,7 +79,8 @@ public class Main {
                                 return Directives.completeWithFuture(http.singleRequest(HttpRequest.create(url)));
                             }
                             else {
-                                return Directives.completeWithFuture(Patterns.ask(actorRef, new ServerQuery()))
+                                return Directives.completeWithFuture(Patterns.ask(actorRef, new ServerQuery(), timeout)
+                                .thenApply())
                             }
                                 }))))
     }
