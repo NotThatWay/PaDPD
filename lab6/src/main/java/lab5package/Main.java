@@ -40,8 +40,12 @@ public class Main {
         initZooKeeper();
     }
 
+    public static Watcher watcher = watchedEvent -> {
+        
+    }
+
     public static void initZooKeeper() {
-        zooKeeper = new ZooKeeper("localhost:8080", (int)timeout, )
+        zooKeeper = new ZooKeeper("localhost:8080", timeout.getSeconds(), watcher)
     }
 }
 
