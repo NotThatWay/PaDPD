@@ -45,12 +45,12 @@ public class Main {
         }
     };
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         ActorSystem actorSystem = ActorSystem.create("routes");
         http = Http.get(actorSystem);
         actorRef = actorSystem.actorOf(Props.create(ConfigurationStoreActor.class));
         ActorMaterializer actorMaterializer = ActorMaterializer.create(actorSystem);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(...);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow().flow(actorSystem, actorMaterializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
